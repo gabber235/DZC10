@@ -5,10 +5,10 @@ using UnityEngine;
 // Allows objects to be picked up from an inventory holder.
 public class PickableItem : MonoBehaviour
 {
-    public ItemType type;
+    [SerializeField] public ItemType type;
 
     // When the player runs in to the item, they will pick it up.
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         var holder = collision.gameObject.GetComponent<IInventoryHolder>();
         if (holder == null) return;

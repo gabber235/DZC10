@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class playerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotateSpeed = 1f;
     [SerializeField] private Camera mainCamera;

@@ -28,7 +28,7 @@ public class Item
 {
     public Item(ItemType type)
     {
-        this.Type = type;
+        Type = type;
     }
 
     public ItemType Type { get; }
