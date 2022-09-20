@@ -76,3 +76,5 @@ crashlytics-build.properties
 
 # Mac files
 .DS_Store
+*.settings
+.idea/
