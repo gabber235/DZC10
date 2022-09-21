@@ -3,9 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     [SerializeField] private float moveSpeed = 5f;
-    // [SerializeField] private float rotateSpeed = 1f;
+    [SerializeField] private float rotateSpeed = 1f;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private InputActionReference _moveActionReference;
+    [SerializeField] private Transform _charModel;
     
     private float _cameraRotationOffset; // Offset by the camera rotation so up always remains up.
     private Transform _playerTransform;
@@ -47,6 +48,10 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 moveDir = transform.TransformDirection(targetVector);
         _charController.Move(Time.deltaTime * moveSpeed * moveDir);
+        
+        // _charModel.transform.Rotate(Vector3.up, 5);
 
+        var rot = Quaternion.LookRotation(moveDir);
+        _charModel.rotation = Quaternion.RotateTowards(_charModel.rotation, rot, rotateSpeed);
     }
 }
