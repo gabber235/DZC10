@@ -8,9 +8,9 @@ public class PickableItem : MonoBehaviour
     [SerializeField] public ItemType type;
 
     // When the player runs in to the item, they will pick it up.
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        var holder = collision.gameObject.GetComponent<IInventoryHolder>();
+        var holder = collider.gameObject.GetComponent<IInventoryHolder>();
         if (holder == null) return;
         holder.Inventory.AddItemByType(type);
         Destroy(gameObject);

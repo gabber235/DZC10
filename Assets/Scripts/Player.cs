@@ -7,9 +7,11 @@ using UnityEngine;
 public class Player : MonoBehaviour, IInventoryHolder
 {
     public Inventory Inventory { get; private set; }
+    public int health;
 
     public void Start()
     {
         Inventory = new Inventory();
+        health = 5;
     }
 }
