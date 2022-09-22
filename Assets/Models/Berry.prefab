@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1564387854848767144}
   - component: {fileID: 1564387854848767145}
   - component: {fileID: 1564387854848767146}
+  - component: {fileID: 5417674932341636507}
   m_Layer: 0
   m_Name: Berry
   m_TagString: Untagged
@@ -111,3 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &5417674932341636507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564387854848767147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133d73c265296461dbceb9cb90738e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

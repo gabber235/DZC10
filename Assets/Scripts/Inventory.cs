@@ -40,6 +40,8 @@ public enum ItemType
     Pineapple,
     Banana,
     Coconut,
+    
+    Cocktail,
 }
 
 // An extension for everything that may hold an inventory
