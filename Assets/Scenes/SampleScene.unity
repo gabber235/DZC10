@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -417,6 +417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 564141650}
+  - component: {fileID: 564141651}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -441,6 +442,29 @@ Transform:
   m_Father: {fileID: 1146590691}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564141651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564141649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2db34721f79994a82b8e57a6ae13d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1460971755}
+  healthText: {fileID: 1658445460}
+  defaultItemImage: {fileID: 21300000, guid: 216a3b910899f2d4f920ac6dca350d84, type: 3}
+  itemImagesList:
+  - {fileID: 108996566}
+  - {fileID: 2057782361}
+  - {fileID: 1263232780}
+  - {fileID: 1741297713}
+  itemTypesList: 00000000010000000200000003000000
+  itemSpritesList:
+  - {fileID: 21300000, guid: c16bc56940e762544b93a2bf96efbb7d, type: 3}
 --- !u!1 &625104157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1513,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d3b73cbb24662d458c3ab31c355a209, type: 3}
+--- !u!1 &1460971754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1401418887907340783, guid: 3d3b73cbb24662d458c3ab31c355a209, type: 3}
+  m_PrefabInstance: {fileID: 1460971753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1460971755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460971754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c2e3048710416998f6b7e62d4eec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
 --- !u!1 &1471758211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,6 +1862,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1000768493}
   healthText: {fileID: 625104159}
+  defaultItemImage: {fileID: 0}
+  itemImagesList:
+  - {fileID: 1009648387}
+  - {fileID: 798334090}
+  - {fileID: 254195277}
+  - {fileID: 956036854}
+  itemTypesList: 00000000010000000200000003000000
+  itemSpritesList:
+  - {fileID: 21300000, guid: c16bc56940e762544b93a2bf96efbb7d, type: 3}
 --- !u!1 &1642987584
 GameObject:
   m_ObjectHideFlags: 0
