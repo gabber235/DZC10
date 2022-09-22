@@ -25,7 +25,7 @@ public class PlayerAttacking : MonoBehaviour {
 
             foreach (var col in enemyCols) {
                 if (col.CompareTag("Enemy")) {
-                    Debug.Log(col);
+                    col.GetComponent<EnemyController>().UpdateHealth(75);
                 }
             }
         }
