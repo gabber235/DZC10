@@ -463,7 +463,12 @@ MonoBehaviour:
   - {fileID: 2057782361}
   - {fileID: 1263232780}
   - {fileID: 1741297713}
-  itemTypesList: 0000000001000000020000000300000004000000
+  itemTypesList:
+  - Berry
+  - Pineapple
+  - Banana
+  - Coconut
+  - Cocktail
   itemSpritesList:
   - {fileID: 21300000, guid: c16bc56940e762544b93a2bf96efbb7d, type: 3}
   - {fileID: 21300000, guid: 21d6161dba9543a49859aad54fec8cfc, type: 3}
@@ -1917,7 +1922,12 @@ MonoBehaviour:
   - {fileID: 798334090}
   - {fileID: 254195277}
   - {fileID: 956036854}
-  itemTypesList: 0000000001000000020000000300000004000000
+  itemTypesList:
+  - Berry
+  - Pineapple
+  - Banana
+  - Coconut
+  - Cocktail
   itemSpritesList:
   - {fileID: 21300000, guid: 447ec8c71e4164641ba07bfb2526197a, type: 3}
   - {fileID: 21300000, guid: 3e3da7e7b24eb214aa61c48996f2f871, type: 3}

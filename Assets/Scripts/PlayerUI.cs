@@ -8,16 +8,17 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] Player player;
+    public Player player;
 
-    [SerializeField] TMP_Text healthText;
+    public TMP_Text healthText;
 
-    [SerializeField] Sprite defaultItemImage;
+    public Sprite defaultItemImage;
     
-    [SerializeField] List<Image> itemImagesList;
+    public List<Image> itemImagesList;
     
-    [SerializeField] List<ItemType> itemTypesList;
-    [SerializeField] List<Sprite> itemSpritesList;
+    [ItemAttribute] public List<string> itemTypesList;
+    
+    public List<Sprite> itemSpritesList;
     
     // Update is called once per frame
     void FixedUpdate()
@@ -30,7 +31,7 @@ public class PlayerUI : MonoBehaviour
             if(inventory.Items.Count > i)
             {
                 var item = inventory.Items[i];
-                var typeIndex = itemTypesList.IndexOf(item.Type);
+                var typeIndex = itemTypesList.IndexOf(item);
                 itemImagesList[i].sprite = typeIndex != -1 && typeIndex < itemSpritesList.Count ? itemSpritesList[typeIndex] : defaultItemImage;
             }
             else

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IInventoryHolder
 
     public void Start()
     {
-        Inventory = new Inventory();
+        Inventory = new Inventory(4);
         health = 5;
     }
 }
