@@ -20,7 +20,13 @@ public class ElvisController : MonoBehaviour
         ));
     }
 
+<<<<<<< Updated upstream
     // Update is called once per frame
+=======
+// Update is called once per frame
+   
+
+>>>>>>> Stashed changes
     void Update()
     {
         if(Input.GetMouseButtonDown(0) && _camera != null)
@@ -35,6 +41,31 @@ public class ElvisController : MonoBehaviour
         transform.Translate(direction.normalized * (speed * Time.deltaTime), Space.World);
     }
 
+<<<<<<< Updated upstream
+=======
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            playerTargets.Add(col.transform);
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            foreach (Transform transform in playerTargets.ToArray())
+            {
+                if (transform == col.transform)
+                {
+                    playerTargets.Remove(col.transform);
+                }
+            }
+        }
+    }
+
+>>>>>>> Stashed changes
     void SetNewTarget(Vector3 newTarget)
     {
         _target = newTarget;
