@@ -27,4 +27,9 @@ public class Player : MonoBehaviour
         if (!shaker) return;
         inventory.MakeCockTail();
     }
+
+    public void Damage(int damage)
+    {
+        health -= damage;
+    }
 }

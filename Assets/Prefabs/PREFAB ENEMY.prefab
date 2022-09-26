@@ -3007,6 +3007,8 @@ GameObject:
   - component: {fileID: 8959123525549401242}
   - component: {fileID: 8252982803366206411}
   - component: {fileID: 8459106998821776117}
+  - component: {fileID: 4494414441192230627}
+  - component: {fileID: 7270657814054486525}
   m_Layer: 0
   m_Name: PREFAB ENEMY
   m_TagString: Enemy
@@ -3150,7 +3152,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 2.2
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3176,6 +3178,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 0
   _maxHealth: 100
+--- !u!114 &4494414441192230627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175411072310705733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133d73c265296461dbceb9cb90738e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7270657814054486525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175411072310705733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788ea4f1d813f4c73baa499b02a8b054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7393175849273082413
 GameObject:
   m_ObjectHideFlags: 0
