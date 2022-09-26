@@ -7,6 +7,8 @@ public class ElvisController : MonoBehaviour
     private Vector3 _target;
     public float speed = 1.0f;
     private Camera _camera;
+    public UnityEngine.AI.NavMeshAgent agent;
+    private readonly List<Transform> _playerTargets = new();
 
     // Start is called before the first frame update
     void Start()
@@ -20,19 +22,35 @@ public class ElvisController : MonoBehaviour
         ));
     }
 
-    // Update is called once per frame
+// Update is called once per frame
+   
+
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && _camera != null)
+        if (_playerTargets.Count <= 0) return;
+        agent.SetDestination(_playerTargets[0].position);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("Player"))
         {
-            var ray = _camera.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray.origin, ray.direction, out var hitInfo))
+            _playerTargets.Add(col.transform);
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            foreach (Transform transform in _playerTargets.ToArray())
             {
-                SetNewTarget(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
+                if (transform == col.transform)
+                {
+                    _playerTargets.Remove(col.transform);
+                }
             }
         }
-        var direction = _target - transform.position;
-        transform.Translate(direction.normalized * (speed * Time.deltaTime), Space.World);
     }
 
     void SetNewTarget(Vector3 newTarget)
