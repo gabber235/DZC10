@@ -26,13 +26,19 @@ public class PlayerAttacking : MonoBehaviour {
         var cocktail = inventory.GetFirstCocktail();
         if (cocktail == null) return;
 
-        
-        Collider[] enemyCols = Physics.OverlapSphere(_attackPos.position, _range);
 
-        foreach (var col in enemyCols) {
-            if (col.CompareTag("Enemy")) {
-                col.GetComponent<EnemyController>().UpdateHealth(75);
-            }
+        var enemyCols = Physics.OverlapSphere(_attackPos.position, _range);
+        var hasHit = false;
+
+        foreach (var col in enemyCols)
+        {
+            if (!col.CompareTag("Enemy")) continue;
+            col.GetComponent<EnemyController>().UpdateHealth(75);
+            hasHit = true;
+        }
+        
+        if (hasHit) {
+            inventory.RemoveItem(cocktail.Name);
         }
     }
 }

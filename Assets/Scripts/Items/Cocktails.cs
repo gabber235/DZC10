@@ -7,10 +7,12 @@ public class Cocktails
 {
     private static readonly List<CocktailRecipe> Recipes = new()
     {
-        new CocktailRecipe(ItemType.Cocktail, ItemType.Berry, ItemType.Pineapple, ItemType.Banana),
-        new CocktailRecipe(ItemType.Cocktail, ItemType.Berry, ItemType.Pineapple, ItemType.Coconut),
-        new CocktailRecipe(ItemType.Cocktail, ItemType.Berry, ItemType.Banana, ItemType.Coconut),
-        new CocktailRecipe(ItemType.Cocktail, ItemType.Pineapple, ItemType.Banana, ItemType.Coconut)
+        new CocktailRecipe(ItemType.Cocktail, ItemType.Berry, ItemType.Pineapple),
+        new CocktailRecipe(ItemType.Cocktail, ItemType.Berry, ItemType.Coconut),
+        new CocktailRecipe(ItemType.Cocktail, ItemType.Berry, ItemType.Banana),
+        new CocktailRecipe(ItemType.Cocktail, ItemType.Pineapple, ItemType.Coconut),
+        new CocktailRecipe(ItemType.Cocktail, ItemType.Pineapple, ItemType.Banana),
+        new CocktailRecipe(ItemType.Cocktail, ItemType.Coconut, ItemType.Banana),
     };
 
     public class CocktailRecipe

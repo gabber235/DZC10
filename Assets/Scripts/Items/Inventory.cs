@@ -36,6 +36,11 @@ public class Inventory
     {
         return Items.Select(ItemType.GetItem).OfType<Cocktail>().FirstOrDefault();
     }
+    
+    public void RemoveItem(string name)
+    {
+        Items.Remove(name);
+    }
 
     public void MakeCockTail()
     {
