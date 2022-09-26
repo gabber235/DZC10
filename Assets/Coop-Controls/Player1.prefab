@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 375795372926976715}
   - component: {fileID: 375795372926976714}
   - component: {fileID: 375795372926976709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 375795374285453224}
   - component: {fileID: 7616377268923940287}
   - component: {fileID: 375795374285453231}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 375795374758483812}
   - component: {fileID: 375795374758483818}
   - component: {fileID: 375795374758483813}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
