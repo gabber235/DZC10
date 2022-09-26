@@ -22,12 +22,18 @@ public class Inventory
         // If a inventory is full, remove the first ingredient
         if (HasMaxItems)
         {
-            if(ItemType.GetItem(Items[0]) is Ingredient)
-                Items.RemoveAt(0);
+            var firstIngredient = Items.First(item => ItemType.GetItem(item) is Ingredient);
+            if(firstIngredient != null)
+                Items.Remove(firstIngredient);
             else return false;
         }
         Items.Add(name);
         return true;
+    }
+    
+    public Cocktail GetFirstCocktail()
+    {
+        return Items.Select(ItemType.GetItem).OfType<Cocktail>().FirstOrDefault();
     }
 
     public void MakeCockTail()

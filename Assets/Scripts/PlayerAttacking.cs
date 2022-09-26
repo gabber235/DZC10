@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
 
+[RequireComponent(typeof(Player))]
 public class PlayerAttacking : MonoBehaviour {
 
     [SerializeField] private Transform _attackPos;
@@ -15,18 +16,22 @@ public class PlayerAttacking : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         _attackActionReference.action.Enable();
+
+        _attackActionReference.action.performed += OnAttack;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_attackActionReference.action.WasPressedThisFrame()) {
-            Collider[] enemyCols = Physics.OverlapSphere(_attackPos.position, _range);
+    private void OnAttack(InputAction.CallbackContext obj) {
+        var player = GetComponent<Player>();
+        var inventory = player.Inventory;
+        var cocktail = inventory.GetFirstCocktail();
+        if (cocktail == null) return;
 
-            foreach (var col in enemyCols) {
-                if (col.CompareTag("Enemy")) {
-                    col.GetComponent<EnemyController>().UpdateHealth(75);
-                }
+        
+        Collider[] enemyCols = Physics.OverlapSphere(_attackPos.position, _range);
+
+        foreach (var col in enemyCols) {
+            if (col.CompareTag("Enemy")) {
+                col.GetComponent<EnemyController>().UpdateHealth(75);
             }
         }
     }
