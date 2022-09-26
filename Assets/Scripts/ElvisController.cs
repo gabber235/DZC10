@@ -8,7 +8,7 @@ public class ElvisController : MonoBehaviour
     public float speed = 1.0f;
     private Camera _camera;
     public UnityEngine.AI.NavMeshAgent agent;
-    public List<Transform> playerTargets = new List<Transform>();
+    private readonly List<Transform> _playerTargets = new();
 
     // Start is called before the first frame update
     void Start()
@@ -27,20 +27,15 @@ public class ElvisController : MonoBehaviour
 
     void Update()
     {
-        if (playerTargets.Count > 0)
-        {
-            if (playerTargets[0] != null)
-            {
-                agent.SetDestination(playerTargets[0].position);
-            }
-        }
+        if (_playerTargets.Count <= 0) return;
+        agent.SetDestination(_playerTargets[0].position);
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.CompareTag("Player"))
         {
-            playerTargets.Add(col.transform);
+            _playerTargets.Add(col.transform);
         }
     }
 
@@ -48,11 +43,11 @@ public class ElvisController : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            foreach (Transform transform in playerTargets.ToArray())
+            foreach (Transform transform in _playerTargets.ToArray())
             {
                 if (transform == col.transform)
                 {
-                    playerTargets.Remove(col.transform);
+                    _playerTargets.Remove(col.transform);
                 }
             }
         }

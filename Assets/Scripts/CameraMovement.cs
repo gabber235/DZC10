@@ -29,7 +29,7 @@ public class CameraMovement : MonoBehaviour
         var newPosition = centerPoint + offset;
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, smoothTime);
         
-        var newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / (70*70));
+        var newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / (50*50));
         _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, newZoom, Time.deltaTime);
     }
 
