@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine;
 
 // Inventory system to track items in a player's inventory
 public class Inventory
@@ -52,10 +53,4 @@ public class Inventory
         // Add the cocktail to the inventory
         AddItem(recipe.Result.Name);
     }
-}
-
-// An extension for everything that may hold an inventory
-public interface IInventoryHolder
-{
-    public Inventory Inventory { get; }
 }

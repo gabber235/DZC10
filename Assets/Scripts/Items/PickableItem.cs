@@ -13,9 +13,9 @@ public class PickableItem : MonoBehaviour
     // When the player runs in to the item, they will pick it up.
     private void OnTriggerEnter(Collider coll)
     {
-        var holder = coll.gameObject.GetComponent<IInventoryHolder>();
+        var holder = coll.gameObject.GetComponent<Player>();
         if (holder == null) return;
-        var added = holder.Inventory.AddItem(item);
+        var added = holder.inventory.AddItem(item);
         // Only if the item was added to the inventory, destroy it.
         if(added) Destroy(gameObject);
     }

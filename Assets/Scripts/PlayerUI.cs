@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,13 +22,13 @@ public class PlayerUI : MonoBehaviour
     public List<Sprite> itemSpritesList;
     
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         healthText.text = $"{player.health}";
         
         for(var i = 0; i < itemImagesList.Count; i++)
         {
-            var inventory = player.Inventory;
+            var inventory = player.inventory;
             if(inventory.Items.Count > i)
             {
                 var item = inventory.Items[i];

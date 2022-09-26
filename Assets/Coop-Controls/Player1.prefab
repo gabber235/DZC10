@@ -110,10 +110,11 @@ GameObject:
   - component: {fileID: 375795374285453230}
   - component: {fileID: 375795374285453225}
   - component: {fileID: 375795374285453224}
+  - component: {fileID: 7616377268923940287}
   - component: {fileID: 375795374285453231}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotateSpeed: 2
-  mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 0}
   _moveActionReference: {fileID: -847166005680969587, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
   _charModel: {fileID: 375795372926976708}
 --- !u!143 &375795374285453224
@@ -169,6 +170,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7616377268923940287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375795374285453227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490c2e3048710416998f6b7e62d4eec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  shaker: 0
+  _shakeActionReference: {fileID: 2027258472975222009, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
 --- !u!114 &375795374285453231
 MonoBehaviour:
   m_ObjectHideFlags: 0

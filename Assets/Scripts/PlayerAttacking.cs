@@ -22,7 +22,7 @@ public class PlayerAttacking : MonoBehaviour {
 
     private void OnAttack(InputAction.CallbackContext obj) {
         var player = GetComponent<Player>();
-        var inventory = player.Inventory;
+        var inventory = player.inventory;
         var cocktail = inventory.GetFirstCocktail();
         if (cocktail == null) return;
 

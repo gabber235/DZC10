@@ -286,6 +286,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Player1ThrowShaker",
+                    "type": "Button",
+                    "id": "beed9b09-0919-4d8a-a615-f5832d258f6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player2ThrowShaker",
+                    "type": "Button",
+                    "id": "2f075da9-19d2-4cee-b6d2-d64e8e79444d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -330,6 +348,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Player2Shake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f0abe0d-cb34-42e4-bd37-2361de9274a9",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2Shake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15a6b2fc-a318-424d-80fd-ef902e524776",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player1ThrowShaker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4adaef72-5759-4159-923c-20a4e06f1e32",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2ThrowShaker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87876f99-8cb2-4c88-bc36-d24bbaadb9d5",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2ThrowShaker",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -3,27 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 // Sample player to quickly test the inventory system.
-public class Player : MonoBehaviour, IInventoryHolder
+public class Player : MonoBehaviour
 {
-    public Inventory Inventory { get; private set; }
+    public readonly Inventory inventory = new Inventory(4);
     public int health;
+    public bool shaker = false;
     
-    [SerializeField] private InputActionReference _attackActionReference;
+    [SerializeField] private InputActionReference _shakeActionReference;
 
     public void Start()
     {
-        Inventory = new Inventory(4);
         health = 5;
         
-        _attackActionReference.action.Enable();
-        _attackActionReference.action.performed += OnShake;
+        _shakeActionReference.action.Enable();
+        _shakeActionReference.action.performed += OnShake;
     }
     
     private void OnShake(InputAction.CallbackContext context)
     {
-        Debug.Log("Shake");
-        Inventory.MakeCockTail();
+        if (!shaker) return;
+        inventory.MakeCockTail();
     }
 }
