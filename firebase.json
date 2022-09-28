@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "build/WebGL",
+    "public": "build/WebGL/WebGL",
     "ignore": [
       "firebase.json",
       "**/.*",
