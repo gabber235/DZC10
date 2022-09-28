@@ -41,6 +41,11 @@ jobs:
           targetPlatform: WebGL
           unityVersion: 2021.3.10f1
 
+      # List files in build
+      - name: List files in build
+        run: ls -R build
+        shell: bash
+
       # Output
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
