@@ -81,6 +81,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "XBox Controller",
+                    "id": "9d68b039-54df-412e-a16a-a309a3301f0d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementPlayer1",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "ff87f74e-a160-4322-9465-92541b63a61f",
+                    "path": "<XInputController>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementPlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "18b5b2b2-f37d-4b3c-9741-6a776e470c94",
+                    "path": "<XInputController>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementPlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "ae458a4c-61d1-4825-aab3-9c0afceaf63f",
+                    "path": "<XInputController>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementPlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9dd9ca7b-b271-4fe3-adb2-c1212fc853ee",
+                    "path": "<XInputController>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementPlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "ArrowKeys",
                     "id": "b5216a83-9ccf-460a-ba29-b6960f151558",
                     "path": "2DVector",
@@ -136,7 +191,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Controller",
+                    "name": "PlayStation Controller",
                     "id": "47d6032e-30ca-4b46-bc2a-7b097e4f8821",
                     "path": "2DVector",
                     "interactions": "",
@@ -149,7 +204,7 @@
                 {
                     "name": "up",
                     "id": "aaafc8dc-07b5-4986-8e42-83325b1b1bb2",
-                    "path": "<Gamepad>/leftStick/up",
+                    "path": "<DualShockGamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -160,7 +215,7 @@
                 {
                     "name": "down",
                     "id": "01b218ac-a5b7-45d4-b782-1fbc80d9624a",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<DualShockGamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -171,7 +226,7 @@
                 {
                     "name": "left",
                     "id": "7f153aea-d9bb-4c93-9663-7f6d191a64ee",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<DualShockGamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -182,7 +237,7 @@
                 {
                     "name": "right",
                     "id": "acdce61b-69b3-4715-aa9f-be3890e3da22",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<DualShockGamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -320,6 +375,17 @@
                 },
                 {
                     "name": "",
+                    "id": "6777e613-2954-46b4-b9a1-26ff75737e43",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player1Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "feadbf9a-408e-4982-a575-4f69a7197445",
                     "path": "<Keyboard>/rightShift",
                     "interactions": "",
@@ -331,8 +397,30 @@
                 },
                 {
                     "name": "",
+                    "id": "f0febcca-8ab3-4d1c-b20c-a83debc61dcc",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1f4ede1e-498d-468b-bcd4-c9eb6632f56b",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player1Shake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "183f62f6-05ab-45c2-86ea-df17183a7c42",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -364,8 +452,30 @@
                 },
                 {
                     "name": "",
+                    "id": "921be005-26e4-4388-b894-2aaa9220a516",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2Shake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "15a6b2fc-a318-424d-80fd-ef902e524776",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player1ThrowShaker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3daa066b-35ca-4b36-8c9a-c22e66d89800",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -388,6 +498,17 @@
                     "name": "",
                     "id": "87876f99-8cb2-4c88-bc36-d24bbaadb9d5",
                     "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2ThrowShaker",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0636bd11-68be-40fa-96d6-3906eecd8322",
+                    "path": "<DualShockGamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
