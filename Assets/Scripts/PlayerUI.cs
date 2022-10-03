@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -21,15 +22,13 @@ public class PlayerUI : MonoBehaviour
     
     public List<Sprite> itemSpritesList;
 
-    public float damAnimationTime = 1f;
-
-    public GameObject DamageUI;
-
+    public float damAnimationTime = 1f; 
     
+    public GameObject damageUI;
 
     void Start()
     {
-        DamageUI.SetActive(false);
+        damageUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,14 +51,14 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        if((Time.realtimeSinceStartup) - (player.lastDamTime) < damAnimationTime && !DamageUI.IsActive)
+        if((Time.realtimeSinceStartup) - (player.lastDamTime) < damAnimationTime && !damageUI.activeSelf)
         {
-           DamageUI.SetActive(true);
+           damageUI.SetActive(true);
         }
 
-        if ((Time.realtimeSinceStartup) - (player.lastDamTime) > damAnimationTime && DamageUI.IsActive)
+        if ((Time.realtimeSinceStartup) - (player.lastDamTime) > damAnimationTime && damageUI.activeSelf)
         {
-           DamageUI.SetActive(false);
+           damageUI.SetActive(false);
         }
        
     }
