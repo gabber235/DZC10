@@ -20,7 +20,18 @@ public class PlayerUI : MonoBehaviour
     [ItemAttribute] public List<string> itemTypesList;
     
     public List<Sprite> itemSpritesList;
+
+    public float damAnimationTime = 1f;
+
+    public GameObject DamageUI;
+
     
+
+    void Start()
+    {
+        DamageUI.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,5 +51,17 @@ public class PlayerUI : MonoBehaviour
                 itemImagesList[i].sprite = defaultItemImage;
             }
         }
+
+        if((Time.realtimeSinceStartup) - (player.lastDamTime) < damAnimationTime && !DamageUI.IsActive)
+        {
+           DamageUI.SetActive(true);
+        }
+
+        if ((Time.realtimeSinceStartup) - (player.lastDamTime) > damAnimationTime && DamageUI.IsActive)
+        {
+           DamageUI.SetActive(false);
+        }
+       
     }
+
 }
