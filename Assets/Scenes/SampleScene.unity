@@ -2021,10 +2021,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6408445816616010358, guid: f4c2fbcea65917c4b982509d4111d445, type: 3}
-      propertyPath: rotateSpeed
-      value: 300
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4c2fbcea65917c4b982509d4111d445, type: 3}
 --- !u!4 &1042994598 stripped
@@ -3476,14 +3472,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 106653600}
     m_Modifications:
-    - target: {fileID: 375795372926976708, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 375795374285453225, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
-      propertyPath: rotateSpeed
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 375795374285453227, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
       propertyPath: m_Name
       value: Player1
