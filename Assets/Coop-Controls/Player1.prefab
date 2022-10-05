@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  rotateSpeed: 2
+  rotateSpeed: 300
   _mainCamera: {fileID: 0}
   _moveActionReference: {fileID: -847166005680969587, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
   _charModel: {fileID: 375795372926976708}
