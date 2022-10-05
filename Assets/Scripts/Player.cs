@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
+[DisallowMultipleComponent]
 // Sample player to quickly test the inventory system.
 public class Player : MonoBehaviour
 {

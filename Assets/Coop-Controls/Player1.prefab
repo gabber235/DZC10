@@ -197,9 +197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c40c38d94175e40a5c9227f04116dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPos: {fileID: 375795374758483812}
+  _interactingPos: {fileID: 375795374758483812}
   _range: 4
   _attackActionReference: {fileID: 7012025136966731215, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
+  interactableColor: {r: 0.10980392, g: 0.8666667, b: 0.11764706, a: 1}
 --- !u!1 &375795374758483815
 GameObject:
   m_ObjectHideFlags: 0
