@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -8,31 +7,28 @@ public class Spawner : MonoBehaviour
     public int secondsDelay = 1;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         SpawnRandom();
     }
 
-    void SpawnRandom()
+    private void SpawnRandom()
     {
         var index = Random.Range(0, prefabs.Length);
-        var go  = Instantiate(prefabs[index], transform.position, Quaternion.identity);
+        var go = Instantiate(prefabs[index], transform.position, Quaternion.identity);
         var onDestroy = go.GetComponent<OnDestroyDispatcher>();
-        if(onDestroy != null)
-        {
-            onDestroy.OnObjectDestroyed += OnDestroyed;
-        }
+        if (onDestroy != null) onDestroy.OnObjectDestroyed += OnDestroyed;
     }
-    
-    void OnDestroyed(GameObject go)
+
+    private void OnDestroyed(GameObject go)
     {
         StartCoroutine(WaitSpawn());
     }
 
-    IEnumerator WaitSpawn()
+    private IEnumerator WaitSpawn()
     {
         yield return new WaitForSeconds(secondsDelay);
-        SpawnRandom();
+        if (!isActiveAndEnabled)
+            SpawnRandom();
     }
-
 }

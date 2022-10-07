@@ -1,46 +1,59 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class CocktailThrowing : MonoBehaviour {
+public class CocktailThrowing : MonoBehaviour
+{
+    public delegate void OnHit();
+
+    public float speed;
+    public float maxHeight;
+
+    private float _fraction;
+    private Vector3 _startPos;
 
     private Transform _transform;
-    private Vector3 startPos;
-    private float _maxHeight;
-    
-    public Transform target {
-        get { return _transform; }
-        set {
-            _transform = value;
 
-            startPos = transform.position;
-        }
-    }
-
-    private Vector3 _velocity = Vector3.zero;
-
-    // Start is called before the first frame update
-    void Start()
+    public Transform Target
     {
-        
+        get => _transform;
+        set
+        {
+            _transform = value;
+            _startPos = transform.position + new Vector3(0f, 1.5f, 0f);
+            _fraction = 0;
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (target != null) {
-            transform.position = Vector3.SmoothDamp(
-                transform.position, 
-                target.position, 
-                ref _velocity, 
-                0.1f
-            );
+        if (Target == null) return;
+        var targetPosition = Target.position;
 
-            var distanceTotal = Vector3.Distance(target.position, startPos);
-            var distanceCocktailToEnemy = Vector3.Distance(target.position, transform.position);
-            var percentageTraveled = distanceTotal / distanceCocktailToEnemy;
+        _fraction += Time.deltaTime * speed;
+
+        var pos = Vector3.Lerp(_startPos, targetPosition, _fraction);
+
+        var distanceCocktailToEnemy = DistanceXZ(targetPosition, pos);
+
+        if (distanceCocktailToEnemy < 0.5f)
+        {
+            onHit?.Invoke();
+            Destroy(gameObject);
+            return;
         }
+
+        var additionalHeight = Mathf.Sin(_fraction * Mathf.PI) * maxHeight;
+
+        var height = Mathf.Lerp(_startPos.y, targetPosition.y, _fraction) + additionalHeight;
+
+        transform.position = new Vector3(pos.x, height, pos.z);
+    }
+
+    public event OnHit onHit;
+
+
+    private static float DistanceXZ(Vector3 start, Vector3 target)
+    {
+        return (target.x - start.x) * (target.x - start.x) + (target.z - start.z) * (target.z - start.z);
     }
 }

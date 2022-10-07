@@ -3179,6 +3179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 0
   _maxHealth: 100
+  cocktailPrefab: {fileID: 9132635088810593090, guid: d5874ebca093b47839c4b5d4082b614a, type: 3}
 --- !u!114 &4494414441192230627
 MonoBehaviour:
   m_ObjectHideFlags: 0
