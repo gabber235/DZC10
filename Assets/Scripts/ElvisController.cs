@@ -42,6 +42,9 @@ public class ElvisController : MonoBehaviour
             // TODO: computing the actual distance to the player will take more time than straight dist
             //  ==> should be fine since we only target those we can see straight on anyways
             
+            //TODO: Assigning players will not work with spawners, so just grab them on Start instead
+            //  Is a costly operation, but for this size it should not be too bad.
+            
             RaycastHit hit;
             
             // Might want to layermask instead
