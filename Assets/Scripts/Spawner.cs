@@ -18,17 +18,19 @@ public class Spawner : MonoBehaviour
         var go = Instantiate(prefabs[index], transform.position, Quaternion.identity);
         var onDestroy = go.GetComponent<OnDestroyDispatcher>();
         if (onDestroy != null) onDestroy.OnObjectDestroyed += OnDestroyed;
+        else Debug.Log("No OnDestroyDispatcher found on " + go.name);
     }
 
     private void OnDestroyed(GameObject go)
     {
-        StartCoroutine(WaitSpawn());
+        if (isActiveAndEnabled)
+            StartCoroutine(WaitSpawn());
     }
 
     private IEnumerator WaitSpawn()
     {
         yield return new WaitForSeconds(secondsDelay);
-        if (!isActiveAndEnabled)
+        if (isActiveAndEnabled)
             SpawnRandom();
     }
 }

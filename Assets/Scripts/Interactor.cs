@@ -1,26 +1,25 @@
-using System;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
 
 [RequireComponent(typeof(Player))]
-public class Interactor : MonoBehaviour {
-
+public class Interactor : MonoBehaviour
+{
     [SerializeField] private Transform _interactingPos;
     [SerializeField] private float _range;
-    
+
     // Coop stuff
     [SerializeField] private InputActionReference _attackActionReference;
-    
-    
-    public Interactable Interactable { get; private set; }
-    
+
     public Color interactableColor = Color.green;
 
 
-    private void Start() {
+    public Interactable Interactable { get; private set; }
+
+
+    private void Start()
+    {
         _attackActionReference.action.Enable();
 
         _attackActionReference.action.performed += OnInteract;
@@ -34,6 +33,7 @@ public class Interactor : MonoBehaviour {
         var numColliders = Physics.OverlapSphereNonAlloc(_interactingPos.transform.position, _range, hitColliders);
         Interactable = hitColliders
             .Take(numColliders)
+            .Where(c => c.GetComponent<IInteractionCondition>()?.CanInteract(this) != false)
             .Select(c => c.GetComponent<Interactable>())
             .Where(i => i != null)
             .OrderBy(i => Vector3
