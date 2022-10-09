@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class ElvisController : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     private readonly List<Transform> _playerTargets = new();
 
+    [SerializeField] private List<Transform> _players;
+    [SerializeField] private List<float> distToPlayers;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +29,51 @@ public class ElvisController : MonoBehaviour
 // Update is called once per frame
    
 
-    void Update()
+    void FixedUpdate()
     {
-        if (_playerTargets.Count <= 0) return;
-        agent.SetDestination(_playerTargets[0].position);
+        // if (_playerTargets.Count <= 0) return;
+        // agent.SetDestination(_playerTargets[0].position);
+
+
+        for (int i = 0; i < 2; i++)
+        {
+            // TODO: fix moving player being missed by the raycast
+            //  ==> SphereCast instead
+            // TODO: computing the actual distance to the player will take more time than straight dist
+            //  ==> should be fine since we only target those we can see straight on anyways
+            
+            RaycastHit hit;
+            
+            // Might want to layermask instead
+            if (Physics.SphereCast(transform.position, 1f, _players[i].position - transform.position, out hit))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    distToPlayers[i] = Vector3.Distance(transform.position, _players[i].position);
+                }
+                else
+                {
+                    distToPlayers[i] = Mathf.Infinity;
+                }
+            }
+        }
+
+        if (float.IsPositiveInfinity(distToPlayers[0]) && float.IsPositiveInfinity(distToPlayers[1]))
+        {
+            return;
+        }
+        else
+        {
+            if (distToPlayers[0] <= distToPlayers[1])
+            {
+                agent.SetDestination(_players[0].position);
+            }
+            else
+            {
+                agent.SetDestination(_players[1].position);
+            }
+        }
+
     }
 
     void OnTriggerEnter(Collider col)
