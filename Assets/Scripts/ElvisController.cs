@@ -11,6 +11,8 @@ public class ElvisController : MonoBehaviour {
     [SerializeField] private List<float> distToPlayers;
     private int _playerCount;
 
+    [SerializeField] private Vector3 _targetPos;
+
     // Start is called before the first frame update
     void Awake() {
         players = GameObject.FindObjectsOfType<PlayerController>().Select(p => p.transform).ToList();
@@ -22,7 +24,7 @@ public class ElvisController : MonoBehaviour {
         for (int i = 0; i < _playerCount; i++) {
 
             RaycastHit hit;
-
+            Debug.DrawRay(transform.position, players[i].position - transform.position, Color.yellow);
             // Might want to layermask instead
             if (Physics.SphereCast(transform.position, 1f, players[i].position - transform.position, out hit)) {
                 if (hit.collider.CompareTag("Player")) {
@@ -40,9 +42,11 @@ public class ElvisController : MonoBehaviour {
         else {
             if (distToPlayers[0] <= distToPlayers[1]) {
                 agent.SetDestination(players[0].position);
+                _targetPos = players[0].position;
             }
             else {
                 agent.SetDestination(players[1].position);
+                _targetPos = players[1].position;
             }
         }
     }
