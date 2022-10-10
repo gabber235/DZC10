@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Interactable : MonoBehaviour
 {
-    public float outlineWidth = 1.5f;
+    public float outlineWidth = 1f;
 
     private Interactor[] _interactors;
 
