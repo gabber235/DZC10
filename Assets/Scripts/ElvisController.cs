@@ -8,15 +8,17 @@ public class ElvisController : MonoBehaviour {
     private Vector3 _target;
     public UnityEngine.AI.NavMeshAgent agent;
     [SerializeField] private List<Transform> players;
-    [SerializeField] private List<float> distToPlayers;
+    [SerializeField] private List<float> distToPlayers = new List<float> {0, 0};
+    private int _playerCount;
 
     // Start is called before the first frame update
     void Awake() {
         players = GameObject.FindObjectsOfType<PlayerController>().Select(p => p.transform).ToList();
+        _playerCount = players.Count;
     }
     
     void FixedUpdate() {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < _playerCount; i++) {
 
             RaycastHit hit;
 
