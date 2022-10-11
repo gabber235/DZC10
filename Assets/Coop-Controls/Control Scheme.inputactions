@@ -463,6 +463,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ca0da808-82a4-40be-b8e6-b5b95e7f4182",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2Shake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "15a6b2fc-a318-424d-80fd-ef902e524776",
                     "path": "<Keyboard>/e",
                     "interactions": "",
