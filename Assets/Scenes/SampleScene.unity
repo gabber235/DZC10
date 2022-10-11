@@ -2523,6 +2523,9 @@ PrefabInstance:
       propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+      propertyPath: shakeActionReference
+      value: 
+      objectReference: {fileID: 7825889589631975574, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
     - target: {fileID: 6408445816616010353, guid: f4c2fbcea65917c4b982509d4111d445, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4562,6 +4565,9 @@ PrefabInstance:
       propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+      propertyPath: shakeActionReference
+      value: 
+      objectReference: {fileID: 2027258472975222009, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
 --- !u!4 &1944394120 stripped

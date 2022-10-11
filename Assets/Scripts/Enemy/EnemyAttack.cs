@@ -1,38 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemyAttack : MonoBehaviour
+namespace Enemy
 {
-    public GameObject the_enemy;
-
-    void OnTriggerEnter(Collider colli)
+    public class EnemyAttack : MonoBehaviour
     {
-        if (colli.CompareTag("Player"))
+        public GameObject theEnemy;
+
+        private float _lastAttackTime;
+        private Player _player;
+
+        private void Update()
         {
-            the_enemy.GetComponent<Animator>().Play("Mutant Punch");
-            the_enemy.GetComponent<ElvisController>().enabled = false;
-            the_enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            if (_player == null) return;
+            if (Time.realtimeSinceStartup - _lastAttackTime < 1.1) return;
+            _lastAttackTime = Time.realtimeSinceStartup;
+            _player.Damage(1);
         }
-    }
 
-    void OnTriggerStay(Collider coll)
-    {
-        var player = coll.gameObject.GetComponent<Player>();
-        if (player == null) return;
-        // Collider is way to big (for player detection) so we need to manually check the distance.
-        if (Vector3.Distance(player.transform.position, transform.position) > 0.5) return;
-        player.Damage(1);
-    }
-
-    void OnTriggerExit(Collider colli)
-    {
-        if (colli.CompareTag("Player"))
+        private void OnTriggerEnter(Collider coll)
         {
-            the_enemy.GetComponent<Animator>().Play("Catwalk Walking");
-            the_enemy.GetComponent<ElvisController>().enabled = true;
-            the_enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+            var player = coll.gameObject.GetComponent<Player>();
+            if (player == null) return;
+            _player = player;
+            _lastAttackTime = Time.realtimeSinceStartup - 0.8f;
+            theEnemy.GetComponent<Animator>().Play("Mutant Punch");
+            theEnemy.GetComponent<ElvisController>().enabled = false;
+            theEnemy.GetComponent<NavMeshAgent>().enabled = false;
         }
-        
+
+        private void OnTriggerExit(Collider coll)
+        {
+            if (!coll.CompareTag("Player")) return;
+            theEnemy.GetComponent<Animator>().Play("Catwalk Walking");
+            theEnemy.GetComponent<ElvisController>().enabled = true;
+            theEnemy.GetComponent<NavMeshAgent>().enabled = true;
+            _player = null;
+        }
     }
 }

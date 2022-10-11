@@ -1658,12 +1658,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3280412111308860461}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.50000024
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: -0.0000018477444, y: 0, z: -0.000001996756}
+  m_Center: {x: -0.0000018477444, y: 0.51, z: -0.000001996756}
 --- !u!64 &4483505102021924355
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1673,7 +1673,7 @@ MeshCollider:
   m_GameObject: {fileID: 3280412111308860461}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530d43e12e7ed7048913ffdd33598eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  the_enemy: {fileID: 7175411072310705733}
+  theEnemy: {fileID: 7175411072310705733}
 --- !u!1 &3555806654332178267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,7 +3135,6 @@ GameObject:
   - component: {fileID: 8252982803366206411}
   - component: {fileID: 8459106998821776117}
   - component: {fileID: 4494414441192230627}
-  - component: {fileID: 7270657814054486525}
   - component: {fileID: 4155687319366435110}
   m_Layer: 0
   m_Name: PREFAB ENEMY
@@ -3181,7 +3180,13 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:RightHandRing2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+    'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+    'mixamorig:RightHandRing1'\n\tTransform 'mixamorig:RightHandIndex3'\n\tand more
+    ...\n\tFrom animation clip 'Mutant Swiping'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3308,7 +3313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 1
   cocktailPrefab: {fileID: 9132635088810593090, guid: d5874ebca093b47839c4b5d4082b614a, type: 3}
 --- !u!114 &4494414441192230627
 MonoBehaviour:
@@ -3320,18 +3325,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133d73c265296461dbceb9cb90738e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7270657814054486525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7175411072310705733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788ea4f1d813f4c73baa499b02a8b054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4155687319366435110

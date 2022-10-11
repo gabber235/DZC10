@@ -1,37 +1,41 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour, IThrowCocktailTrigger
+namespace Enemy
 {
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float maxHealth;
-
-    public GameObject cocktailPrefab;
-
-    // Start is called before the first frame update
-    private void Start()
+    public class EnemyController : MonoBehaviour, IThrowCocktailTrigger
     {
-        currentHealth = maxHealth;
-    }
+        [SerializeField] private float currentHealth;
+        [SerializeField] private float maxHealth;
 
-    public GameObject CocktailPrefab => cocktailPrefab;
+        public GameObject cocktailPrefab;
 
-    public void OnCocktailHit(Interactor interactor)
-    {
-        GetComponent<Animator>().Play("Swing Dancing");
-        GetComponent<ElvisController>().enabled = false;
-        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-    }
+        // Start is called before the first frame update
+        private void Start()
+        {
+            currentHealth = maxHealth;
+        }
 
-    private void Damage(float damage)
-    {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        public GameObject CocktailPrefab => cocktailPrefab;
 
-        if (currentHealth == 0) EnemyDeath();
-    }
+        public void OnCocktailHit(Interactor interactor)
+        {
+            GetComponent<Animator>().Play("Swing Dancing");
+            GetComponent<ElvisController>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
 
-    private void EnemyDeath()
-    {
-        Destroy(gameObject);
+        private void Damage(float damage)
+        {
+            currentHealth -= damage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+            if (currentHealth == 0) EnemyDeath();
+        }
+
+        private void EnemyDeath()
+        {
+            Destroy(gameObject);
+        }
     }
 }
