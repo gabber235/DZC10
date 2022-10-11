@@ -41,9 +41,9 @@ namespace Enemy
 
         private void EnemyDeath()
         {
-            GetComponent<Animator>().SetBool("Dancing", true);
             GetComponent<ElvisController>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<Animator>().SetBool("Dancing", true);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +7,11 @@ public class DeathScreen : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
-    public void RestartButton() {
+
+    public void RestartButton()
+    {
         //Time.timeScale = 1;
+        Debug.Log("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

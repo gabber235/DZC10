@@ -40,6 +40,12 @@ namespace Enemy
 
         private void OnTriggerEnter(Collider coll)
         {
+            if (_enemyController.IsDancing)
+            {
+                enabled = false;
+                return;
+            }
+
             var player = coll.gameObject.GetComponent<Player>();
             if (player == null) return;
             _player = player;
@@ -51,6 +57,12 @@ namespace Enemy
 
         private void OnTriggerExit(Collider coll)
         {
+            if (_enemyController.IsDancing)
+            {
+                enabled = false;
+                return;
+            }
+
             if (!coll.CompareTag("Player")) return;
             _animator.SetBool(Attacking, false);
             _elvisController.enabled = true;
