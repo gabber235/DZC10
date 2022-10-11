@@ -3,20 +3,22 @@ using System.Linq;
 
 public class ItemType
 {
-    public static readonly Ingredient Berry = new("Berry");
-    public static readonly Ingredient Pineapple = new("Pineapple");
-    public static readonly Ingredient Banana = new("Banana");
-    public static readonly Ingredient Coconut = new("Coconut");
+    public static readonly Ingredient Strawberry = new("strawberry");
+    public static readonly Ingredient Lemon = new("Lemon");
+    public static readonly Ingredient Pepper = new("Pepper");
     
-    public static readonly Cocktail Cocktail = new("Cocktail");
-    
+    public static readonly Cocktail CocktailStrawPep = new("CocktailStrawPep");
+    public static readonly Cocktail CocktailLemPep = new("CocktailLemPep");
+    public static readonly Cocktail CocktailStrawLem = new("CocktailStrawLem");
+
     public static readonly List<Item> Values = new()
     {
-        Berry,
-        Pineapple,
-        Banana,
-        Coconut,
-        Cocktail
+        Strawberry,
+        Lemon,
+        Pepper,
+        CocktailStrawPep,
+        CocktailLemPep,
+        CocktailStrawLem
     };
     
     public static Item GetItem(string name)

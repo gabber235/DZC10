@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public bool dead = false;
     public UnityEvent GameOver;
 
+    public double lastDamTime;
     
     [SerializeField] private InputActionReference _shakeActionReference;
 
@@ -44,5 +45,7 @@ public class Player : MonoBehaviour
     public void Damage(int damage)
     {
         health -= damage;
+        // last dam time --> currrent playing time
+        lastDamTime = Time.realtimeSinceStartup;
     }
 }

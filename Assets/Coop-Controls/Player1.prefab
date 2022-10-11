@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 375795372926976709}
   m_Layer: 6
   m_Name: Player Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 375795374285453224}
   - component: {fileID: 7616377268923940287}
   - component: {fileID: 375795374285453231}
+  - component: {fileID: 3894290516307268417}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Player
@@ -201,6 +202,24 @@ MonoBehaviour:
   _range: 4
   _attackActionReference: {fileID: 7012025136966731215, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
   interactableColor: {r: 0.10980392, g: 0.8666667, b: 0.11764706, a: 1}
+--- !u!114 &3894290516307268417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375795374285453227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 4
+  outlineColor: {r: 0.026628638, g: 0.8301887, b: 0.034955632, a: 0.23529412}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &375795374758483815
 GameObject:
   m_ObjectHideFlags: 0

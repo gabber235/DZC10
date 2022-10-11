@@ -1,42 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IInteractingTrigger {
+public class EnemyController : MonoBehaviour, IThrowCocktailTrigger
+{
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float maxHealth;
 
-    [SerializeField] private float _currentHealth;
-    [SerializeField] private float _maxHealth;
-    
+    public GameObject cocktailPrefab;
+
     // Start is called before the first frame update
-    void Start() {
-        _currentHealth = _maxHealth;
-    }
-
-    public void Damage(float damage) {
-        _currentHealth -= damage;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
-
-        if (_currentHealth == 0) {
-            EnemyDeath();
-        }
-    }
-
-    public void OnInteract(Interactor interactor)
+    private void Start()
     {
-        // If a player damages the enemy, we remove a cocktail from their inventory and damage the enemy.
-        var player = interactor.GetComponent<Player>();
-        if (player == null) return;
-        var inventory = player.inventory;
-        var cocktail = inventory.GetFirstCocktail();
-        if (cocktail == null) return;
-        
-        Damage(75);
-        
-        inventory.RemoveItem(cocktail.Name);
+        currentHealth = maxHealth;
     }
 
-    private void EnemyDeath() {
-        // this.gameObject.SetActive(false);
+    public GameObject CocktailPrefab => cocktailPrefab;
+
+    public void OnCocktailHit(Interactor interactor)
+    {
+        Damage(100);
+    }
+
+    private void Damage(float damage)
+    {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        if (currentHealth == 0) EnemyDeath();
+    }
+
+    private void EnemyDeath()
+    {
         Destroy(gameObject);
     }
 }

@@ -1,62 +1,74 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ElvisController : MonoBehaviour
 {
+    public NavMeshAgent agent;
+    [SerializeField] private List<Transform> players;
+    [SerializeField] private List<float> distToPlayers;
+
+    [SerializeField] private bool debug;
+    private int _playerCount;
     private Vector3 _target;
-    public float speed = 1.0f;
-    private Camera _camera;
-    public UnityEngine.AI.NavMeshAgent agent;
-    private readonly List<Transform> _playerTargets = new();
+
+    private Vector3 _targetPos;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        _camera = Camera.main;
-        var position = transform.position;
-        SetNewTarget (new Vector3(
-            position.x + 10,
-            position.y,
-            position.z + 10
-        ));
+        players = FindObjectsOfType<PlayerController>().Select(p => p.transform).ToList();
+        distToPlayers = players.Select(_ => Mathf.Infinity).ToList();
+        _playerCount = players.Count;
+
+        agent.SetDestination(transform.localPosition);
     }
 
-// Update is called once per frame
-   
-
-    void Update()
+    private void FixedUpdate()
     {
-        if (_playerTargets.Count <= 0) return;
-        agent.SetDestination(_playerTargets[0].position);
-    }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag("Player"))
+        var pos = transform.position;
+        for (var i = 0; i < _playerCount; i++)
         {
-            _playerTargets.Add(col.transform);
-        }
-    }
+            RaycastHit hit;
+#if UNITY_EDITOR
+            if (debug) Debug.DrawRay(pos, players[i].position - pos, Color.yellow);
+#endif
 
-    void OnTriggerExit(Collider col)
-    {
-        if (col.CompareTag("Player"))
+            if (!Physics.SphereCast(transform.position, 0.5f, players[i].position - transform.position, out hit))
+                continue;
+
+            if (hit.collider.CompareTag("Player"))
+                distToPlayers[i] = Vector3.Distance(transform.position, players[i].position);
+            else
+                distToPlayers[i] = Mathf.Infinity;
+        }
+
+        if (float.IsPositiveInfinity(distToPlayers[0]) && float.IsPositiveInfinity(distToPlayers[1])) return;
+
+        var min = distToPlayers.Min();
+        var closestIndex = distToPlayers.FindIndex(d => Math.Abs(d - min) < 0.001f);
+
+        if (closestIndex != -1)
         {
-            foreach (Transform transform in _playerTargets.ToArray())
-            {
-                if (transform == col.transform)
-                {
-                    _playerTargets.Remove(col.transform);
-                }
-            }
+            agent.SetDestination(players[closestIndex].position);
+            _targetPos = players[closestIndex].position;
+            agent.isStopped = false;
+            _targetPos = agent.destination;
         }
+
+        if (agent.remainingDistance < 1)
+            // Attack logic
+            agent.isStopped = true;
     }
 
-    void SetNewTarget(Vector3 newTarget)
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
     {
-        _target = newTarget;
-        transform.LookAt(_target);
+        if (!debug) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_targetPos, 0.5f);
     }
+#endif
 }
-
