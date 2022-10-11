@@ -1564,6 +1564,66 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0005391836, y: 0.7910938, z: 0.0125560835}
     m_Extent: {x: 0.13246633, y: 0.0662117, z: 0.06929484}
   m_DirtyAABB: 0
+--- !u!1 &3280412111308860461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399147847272923523}
+  - component: {fileID: 9045307182144634336}
+  - component: {fileID: 5846500867624108015}
+  m_Layer: 0
+  m_Name: Attack Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399147847272923523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280412111308860461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5210817292838008768}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &9045307182144634336
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280412111308860461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.0000018477444, y: 0.51, z: -0.000001996756}
+--- !u!114 &5846500867624108015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3280412111308860461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530d43e12e7ed7048913ffdd33598eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theEnemy: {fileID: 7175411072310705733}
 --- !u!1 &3555806654332178267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,7 +3068,6 @@ GameObject:
   - component: {fileID: 8252982803366206411}
   - component: {fileID: 8459106998821776117}
   - component: {fileID: 4494414441192230627}
-  - component: {fileID: 7270657814054486525}
   - component: {fileID: 4155687319366435110}
   m_Layer: 0
   m_Name: PREFAB ENEMY
@@ -3034,6 +3093,7 @@ Transform:
   - {fileID: 7474324389480045868}
   - {fileID: 6378353991300120584}
   - {fileID: 2734259090990167788}
+  - {fileID: 1399147847272923523}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3053,7 +3113,13 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+    'mixamorig:RightHandRing2'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+    'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+    'mixamorig:RightHandRing1'\n\tTransform 'mixamorig:RightHandIndex3'\n\tand more
+    ...\n\tFrom animation clip 'Mutant Swiping'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3179,8 +3245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1132db5b3612164f8c88e19308c688f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
-  _maxHealth: 100
+  currentHealth: 0
+  maxHealth: 1
   cocktailPrefab: {fileID: 9132635088810593090, guid: d5874ebca093b47839c4b5d4082b614a, type: 3}
 --- !u!114 &4494414441192230627
 MonoBehaviour:
@@ -3192,18 +3258,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133d73c265296461dbceb9cb90738e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7270657814054486525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7175411072310705733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788ea4f1d813f4c73baa499b02a8b054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4155687319366435110

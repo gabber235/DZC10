@@ -73,7 +73,7 @@ internal interface IThrowCocktailTrigger : IInteractingTrigger
         // If a player damages the enemy, we remove a cocktail from their inventory and damage the enemy.
         var player = interactor.GetComponent<Player>();
         if (player == null) return;
-        var inventory = player.inventory;
+        var inventory = player.Inventory;
         var cocktailItem = inventory.GetFirstCocktail(AcceptsCocktail);
         if (cocktailItem == null) return;
 
