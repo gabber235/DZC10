@@ -59,3 +59,42 @@ internal interface IInteractionCondition
 {
     bool CanInteract(Interactor interactor);
 }
+
+internal interface IThrowCocktailTrigger : IInteractingTrigger
+{
+    GameObject CocktailPrefab { get; }
+
+    // Make a exception in naming to align with the GameObject.transform
+    // ReSharper disable once InconsistentNaming
+    Transform transform { get; }
+
+    void IInteractingTrigger.OnInteract(Interactor interactor)
+    {
+        // If a player damages the enemy, we remove a cocktail from their inventory and damage the enemy.
+        var player = interactor.GetComponent<Player>();
+        if (player == null) return;
+        var inventory = player.inventory;
+        var cocktailItem = inventory.GetFirstCocktail(AcceptsCocktail);
+        if (cocktailItem == null) return;
+
+        var cocktailPrefab = CocktailPrefab;
+
+        if (cocktailPrefab == null) return;
+
+        inventory.RemoveItem(cocktailItem.Name);
+
+        var cocktail = Object.Instantiate(cocktailPrefab, interactor.transform.position, Quaternion.identity);
+        var cocktailThrowing = cocktail.GetComponent<CocktailThrowing>();
+        cocktailThrowing.Target = transform;
+        // This is ran once the animation is done.
+        cocktailThrowing.onHit += () => { OnCocktailHit(interactor); };
+    }
+
+    bool AcceptsCocktail(Cocktail cocktail)
+    {
+        return true;
+    }
+
+
+    void OnCocktailHit(Interactor interactor);
+}

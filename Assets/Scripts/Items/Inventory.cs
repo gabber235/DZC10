@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEngine;
 
 // Inventory system to track items in a player's inventory
 public class Inventory
@@ -24,19 +22,20 @@ public class Inventory
         if (HasMaxItems)
         {
             var firstIngredient = Items.First(item => ItemType.GetItem(item) is Ingredient);
-            if(firstIngredient != null)
+            if (firstIngredient != null)
                 Items.Remove(firstIngredient);
             else return false;
         }
+
         Items.Add(name);
         return true;
     }
-    
-    public Cocktail GetFirstCocktail()
+
+    public Cocktail GetFirstCocktail(Func<Cocktail, bool> predicate)
     {
-        return Items.Select(ItemType.GetItem).OfType<Cocktail>().FirstOrDefault();
+        return Items.Select(ItemType.GetItem).OfType<Cocktail>().FirstOrDefault(predicate);
     }
-    
+
     public void RemoveItem(string name)
     {
         Items.Remove(name);
@@ -54,7 +53,7 @@ public class Inventory
             if (item != null)
                 Items.Remove(item);
         }
-        
+
         // Add the cocktail to the inventory
         AddItem(recipe.Result.Name);
     }
