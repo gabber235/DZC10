@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.Events;
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public double lastDamTime;
 
     [SerializeField] private InputActionReference shakeActionReference;
+    [HideInInspector] public bool dead;
+    public UnityEvent GameOver;
+
     public readonly Inventory Inventory = new(4);
 
     public void Start()
@@ -35,7 +39,16 @@ public class Player : MonoBehaviour
 
     public void Damage(int damage)
     {
+        if (dead) return;
         health -= damage;
+
+        if (health <= 0)
+        {
+            health = 0;
+            dead = true;
+            GameOver.Invoke();
+        }
+
         // last dam time --> currrent playing time
         lastDamTime = Time.realtimeSinceStartup;
     }
