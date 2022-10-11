@@ -1,50 +1,48 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 [DisallowMultipleComponent]
 // Sample player to quickly test the inventory system.
 public class Player : MonoBehaviour
 {
-    public readonly Inventory inventory = new Inventory(4);
     public int health;
-    public bool shaker = false;
-    public bool dead = false;
+
+    [HideInInspector] public bool shaker;
+    [HideInInspector] public double lastDamTime;
+
+    [SerializeField] private InputActionReference shakeActionReference;
+    [HideInInspector] public bool dead;
     public UnityEvent GameOver;
 
-    public double lastDamTime;
-    
-    [SerializeField] private InputActionReference _shakeActionReference;
+    public readonly Inventory Inventory = new(4);
 
     public void Start()
     {
         health = 5;
-        
-        _shakeActionReference.action.Enable();
-        _shakeActionReference.action.performed += OnShake;
-    }
 
-    public void Update()
-    {
-        if(health <= 0 && !dead)
-        {
-            GameOver.Invoke();
-        }
+        shakeActionReference.action.Enable();
+        shakeActionReference.action.performed += OnShake;
     }
 
     private void OnShake(InputAction.CallbackContext context)
     {
         if (!shaker) return;
-        inventory.MakeCockTail();
+        Inventory.MakeCockTail();
     }
 
     public void Damage(int damage)
     {
+        if (dead) return;
         health -= damage;
+
+        if (health <= 0)
+        {
+            health = 0;
+            dead = true;
+            GameOver.Invoke();
+        }
+
         // last dam time --> currrent playing time
         lastDamTime = Time.realtimeSinceStartup;
     }
