@@ -1,19 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
-using UnityEngine.Events;
 
 [DisallowMultipleComponent]
 // Sample player to quickly test the inventory system.
 public class Player : MonoBehaviour
 {
     public int health;
-    public bool dead = false;
-    public UnityEvent GameOver;
 
-    public double lastDamTime;
-    
     [HideInInspector] public bool shaker;
     [HideInInspector] public double lastDamTime;
 
