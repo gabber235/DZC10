@@ -17,7 +17,9 @@ public class EnemyController : MonoBehaviour, IThrowCocktailTrigger
 
     public void OnCocktailHit(Interactor interactor)
     {
-        Damage(100);
+        GetComponent<Animator>().Play("Swing Dancing");
+        GetComponent<ElvisController>().enabled = false;
+        GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
     }
 
     private void Damage(float damage)
