@@ -185,7 +185,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   shaker: 0
-  _shakeActionReference: {fileID: 7825889589631975574, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
+  lastDamTime: 0
+  shakeActionReference: {fileID: 7825889589631975574, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
+  dead: 0
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6408445816616010352
 MonoBehaviour:
   m_ObjectHideFlags: 0
