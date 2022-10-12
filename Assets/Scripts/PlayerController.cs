@@ -1,57 +1,62 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotateSpeed = 1f;
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private InputActionReference _moveActionReference;
     [SerializeField] private Transform _charModel;
-    
+
     private float _cameraRotationOffset; // Offset by the camera rotation so up always remains up.
-    private Transform _playerTransform;
-    private Vector2 _inputVector = Vector2.zero;
     private CharacterController _charController;
+    private Vector2 _inputVector = Vector2.zero;
+
+    // To prevent players walking on things.
+    private float startY;
 
 
-    void Awake() {
+    private void Awake()
+    {
         _charController = GetComponent<CharacterController>();
     }
 
     // Start is called before the first frame update
-    void Start() {
+    private void Start()
+    {
         _mainCamera = Camera.main;
         _cameraRotationOffset = _mainCamera.transform.eulerAngles.y; // We use the rotation in world-space.
-        _playerTransform = transform;
-        
-        
+
+        startY = transform.position.y;
+
         _moveActionReference.action.Enable();
     }
-    
-    // Update is called once per frame
-    void Update() {
 
-        _inputVector =  _moveActionReference.action.ReadValue<Vector2>();
+    // Update is called once per frame
+    private void Update()
+    {
+        _inputVector = _moveActionReference.action.ReadValue<Vector2>();
 
         // Direction vector for our movement. We take into account camera rotation to have up always be up as
         // expected while playing. Additionally, we normalize to prevent diagonal movement from being faster.
-        Vector3 targetVector = Quaternion.Euler(0, _cameraRotationOffset, 0)
-                               * new Vector3(_inputVector.x, 0, _inputVector.y)
-                                   .normalized;
+        var targetVector = Quaternion.Euler(0, _cameraRotationOffset, 0)
+                           * new Vector3(_inputVector.x, 0, _inputVector.y)
+                               .normalized;
 
         // Only move when needed
-        if (targetVector.magnitude != 0) {
-            CharacterMovement(targetVector);
-        }
+        if (targetVector.magnitude != 0) CharacterMovement(targetVector);
     }
 
-    private void CharacterMovement(Vector3 targetVector) {
-        Vector3 targetPosition = moveSpeed * Time.deltaTime * targetVector + _playerTransform.position;
-
-        Vector3 moveDir = transform.TransformDirection(targetVector);
+    private void CharacterMovement(Vector3 targetVector)
+    {
+        var moveDir = transform.TransformDirection(targetVector);
         _charController.Move(Time.deltaTime * moveSpeed * moveDir);
-        
-        // _charModel.transform.Rotate(Vector3.up, 5);
+
+        // Reset the Y position to prevent walking on things.
+        var pos = transform.position;
+        pos.y = startY;
+        transform.position = pos;
 
         var rot = Quaternion.LookRotation(moveDir);
         _charModel.rotation = Quaternion.RotateTowards(_charModel.rotation, rot, rotateSpeed * Time.deltaTime);
