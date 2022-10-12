@@ -100,7 +100,7 @@ MonoBehaviour:
   players:
   - {fileID: 0}
   - {fileID: 0}
-  offset: {x: 0, y: 71.39, z: -66.48}
+  offset: {x: 0, y: 71.39, z: -70}
   smoothTime: 0.5
-  minZoom: 40
-  maxZoom: 10
+  minZoom: 30
+  maxZoom: 4
