@@ -3,7 +3,8 @@ guid: c794850c856ea4738bb2e8d6ec0c9907
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cocktailPrefab: {fileID: 9132635088810593090, guid: d5874ebca093b47839c4b5d4082b614a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

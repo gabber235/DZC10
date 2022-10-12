@@ -3070,7 +3070,7 @@ GameObject:
   - component: {fileID: 4494414441192230627}
   - component: {fileID: 4155687319366435110}
   m_Layer: 0
-  m_Name: PREFAB ENEMY
+  m_Name: Elvis
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

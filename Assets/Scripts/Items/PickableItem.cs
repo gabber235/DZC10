@@ -5,6 +5,18 @@ public class PickableItem : MonoBehaviour
 {
     [SerializeField] [ItemAttribute] public string item;
 
+    private void FixedUpdate()
+    {
+        var trans = transform;
+        // Rotate the item.
+        trans.Rotate(Vector3.up, 1f);
+        // Move the item up and down smoothly to simulate bobbing.
+        var position = trans.position;
+        position =
+            new Vector3(position.x, Mathf.Sin(Time.time) * 0.5f + 1f, position.z);
+        transform.position = position;
+    }
+
     // When the player runs in to the item, they will pick it up.
     private void OnTriggerEnter(Collider coll)
     {

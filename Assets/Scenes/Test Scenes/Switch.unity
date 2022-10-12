@@ -326,6 +326,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 659a87ffacd2f624faf4c43880c189df, type: 3}
   - {fileID: 21300000, guid: 7e32cf549753ea241bb02c50b7e54ffb, type: 3}
   - {fileID: 21300000, guid: f45a70c00cc73ba4d971de73fe00c42f, type: 3}
+  damAnimationTime: 1
+  damageUI: {fileID: 0}
 --- !u!1 &719324713
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,6 +871,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7be9a7abbc96cea4b97dd4c28430d92a, type: 3}
   - {fileID: 21300000, guid: 62648f86ec769fe46898dbde79d1918a, type: 3}
   - {fileID: 21300000, guid: 33511883ad384a745a721840a6cd3b14, type: 3}
+  damAnimationTime: 1
+  damageUI: {fileID: 0}
 --- !u!1001 &1165428038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1696,7 +1700,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114139599293063180, guid: 2dc454a70459b114b8a1635429bfda8d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dc454a70459b114b8a1635429bfda8d, type: 3}
 --- !u!1 &1729332447 stripped
 GameObject:
