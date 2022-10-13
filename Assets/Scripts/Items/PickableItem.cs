@@ -13,7 +13,7 @@ public class PickableItem : MonoBehaviour
         // Move the item up and down smoothly to simulate bobbing.
         var position = trans.position;
         position =
-            new Vector3(position.x, Mathf.Sin(Time.time) * 0.5f + 1f, position.z);
+            new Vector3(position.x, Mathf.Sin(Time.time) * 0.25f + 0.5f, position.z);
         transform.position = position;
     }
 
