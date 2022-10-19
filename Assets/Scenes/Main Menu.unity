@@ -791,9 +791,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b11f529791a4cb84ab2ebee7198c67d4, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 8b8bb28f3fd212049bdb6717562704f3, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b11f529791a4cb84ab2ebee7198c67d4, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 52e84b2e05de8fb419337a0890ce27ec, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ee98f3d6fed386d47bf6b0374a552670, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 52e84b2e05de8fb419337a0890ce27ec, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: a3a811633a115334fb7a4c5261dec70b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -805,7 +805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1524140329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1243359200}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: NextLevelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1524140329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,7 +838,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3a811633a115334fb7a4c5261dec70b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05d8ac7f612a9944aac3b51b53a13955, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -991,9 +1003,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b11f529791a4cb84ab2ebee7198c67d4, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 8b8bb28f3fd212049bdb6717562704f3, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: b11f529791a4cb84ab2ebee7198c67d4, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 52e84b2e05de8fb419337a0890ce27ec, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: ee98f3d6fed386d47bf6b0374a552670, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 52e84b2e05de8fb419337a0890ce27ec, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: a3a811633a115334fb7a4c5261dec70b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1038,7 +1050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3a811633a115334fb7a4c5261dec70b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05d8ac7f612a9944aac3b51b53a13955, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

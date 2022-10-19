@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,7 +11,18 @@ public class LevelManager : MonoBehaviour
 
     // Update is called once per frame
     public void QuitGameButton() {
+        Debug.Log("Quit game");
         Application.Quit();
-        Debug.Log("game should quit");
+        
+    }
+
+    public void NextLevelButton() {
+        Debug.Log("Going to the next level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void ReturnToMenuButton() {
+        Debug.Log("Returning to menu");
+        SceneManager.LoadScene(0);
     }
 }
