@@ -14,7 +14,8 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void QuitGame() {
+    public void QuitGameButton() {
         Application.Quit();
+        Debug.Log("game should quit");
     }
 }
