@@ -29132,8 +29132,8 @@ PrefabInstance:
       propertyPath: m_StepOffset
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6408445816680112826, guid: f4c2fbcea65917c4b982509d4111d445, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 6408445816680112824, guid: f4c2fbcea65917c4b982509d4111d445, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -71536,9 +71536,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 375795374758483813, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 375795374758483815, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616377268923940287, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616377268923940287, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
+      propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7616377268923940287, guid: 71fef04e578ae7742ae397f126d92d2a, type: 3}
       propertyPath: GameOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
