@@ -7,6 +7,8 @@ public class SprinklerSwitch : MonoBehaviour, IInteractionCondition, IInteractin
     private Pipe _pipe;
     private List<Sprinkler> _sprinklers;
 
+    public GameObject ElevatorObj;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -25,6 +27,8 @@ public class SprinklerSwitch : MonoBehaviour, IInteractionCondition, IInteractin
 
         foreach (var sprinkler in _sprinklers) sprinkler.StartSprinkler();
         _isSprinklerOn = true;
+        
+        ElevatorObj.GetComponent<Animator>().Play("ElevatorOpening");
     }
 
     public bool CanInteract(Interactor interactor)
