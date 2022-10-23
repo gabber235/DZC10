@@ -11,6 +11,7 @@ public class Shaker : MonoBehaviour
     public List<InputActionReference> throwsActionReference;
     public int currentShakerIndex;
     public Vector3 offset;
+    public Vector3 LOS_offset;
 
     private Vector3 _velocity;
 
@@ -34,14 +35,29 @@ public class Shaker : MonoBehaviour
             ref _velocity, 
             0.1f
             );
+        
+        Debug.DrawRay(players[0].transform.position + LOS_offset, (players[1].transform.position + LOS_offset) - (players[0].transform.position + LOS_offset), Color.yellow);
     }
 
     // If the player is holding the shaker, switch to the next player
     private void SwitchShaker(int index)
     {
         if (currentShakerIndex != index) return;
-        players[currentShakerIndex].shaker = false;
-        currentShakerIndex = (currentShakerIndex + 1) % players.Count;
-        players[currentShakerIndex].shaker = true;
+        
+        // Ensure line-of-sight when switching shaker
+        RaycastHit hit;
+        if (Physics.SphereCast(players[0].transform.position, 0.5f, players[1].transform.position - players[0].transform.position, out hit)) {
+            if (hit.collider.CompareTag("Player")) {
+                Debug.Log("Player in sight");
+                players[currentShakerIndex].shaker = false;
+                currentShakerIndex = (currentShakerIndex + 1) % players.Count;
+                players[currentShakerIndex].shaker = true;
+            }
+            else {
+                Debug.Log("No Player LOS");
+            }
+        }
+
+        
     }
 }
