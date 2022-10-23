@@ -11,8 +11,12 @@ public class Shaker : MonoBehaviour
     public List<InputActionReference> throwsActionReference;
     public int currentShakerIndex;
     public Vector3 offset;
+    
+    // Used for LOS shaker switching
     public Vector3 LOS_offset;
-
+    public LayerMask ignoreLayer;
+    public float maxThrowDistance;
+    
     private Vector3 _velocity;
 
     private void Start()
@@ -36,25 +40,26 @@ public class Shaker : MonoBehaviour
             0.1f
             );
         
-        Debug.DrawRay(players[0].transform.position + LOS_offset, (players[1].transform.position + LOS_offset) - (players[0].transform.position + LOS_offset), Color.yellow);
+        // Debug.DrawRay(players[0].transform.position + LOS_offset, (players[1].transform.position + LOS_offset) - (players[0].transform.position + LOS_offset), Color.yellow);
     }
 
     // If the player is holding the shaker, switch to the next player
     private void SwitchShaker(int index)
     {
         if (currentShakerIndex != index) return;
+        if (players[0] == null || players[1] == null) return;
         
         // Ensure line-of-sight when switching shaker
         RaycastHit hit;
-        if (Physics.SphereCast(players[0].transform.position, 0.5f, players[1].transform.position - players[0].transform.position, out hit)) {
+        if (Physics.Raycast(players[0].transform.position + LOS_offset, (players[1].transform.position + LOS_offset) - (players[0].transform.position + LOS_offset), out hit, maxThrowDistance, ~ignoreLayer)) {
             if (hit.collider.CompareTag("Player")) {
-                Debug.Log("Player in sight");
+                // Debug.Log("Player in sight");
                 players[currentShakerIndex].shaker = false;
                 currentShakerIndex = (currentShakerIndex + 1) % players.Count;
                 players[currentShakerIndex].shaker = true;
             }
             else {
-                Debug.Log("No Player LOS");
+                // Debug.Log("No Player LOS");
             }
         }
 
