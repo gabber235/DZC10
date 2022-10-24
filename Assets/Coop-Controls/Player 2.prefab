@@ -67,8 +67,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -91,7 +91,19 @@ MonoBehaviour:
   dead: 0
   GameOver:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6408445816616010352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +119,7 @@ MonoBehaviour:
   _interactingPos: {fileID: 6408445816680112827}
   _range: 4
   _attackActionReference: {fileID: -581075585554764564, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
-  interactableColor: {r: 0.9529412, g: 0.22745098, b: 0.22745098, a: 1}
+  interactableColor: {r: 0.94509804, g: 0.9019608, b: 0.21568628, a: 1}
 --- !u!114 &4822164505782252691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 4
-  outlineColor: {r: 0.8396226, g: 0, b: 0, a: 0.23529412}
+  outlineColor: {r: 0.94509804, g: 0.9019608, b: 0.21568628, a: 0.23529412}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
@@ -174,7 +186,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6408445816680112824}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
