@@ -10,7 +10,7 @@ public class TutorialManager : MonoBehaviour
     private TutorialSteps _step;
 
     // Current step of the tutorial
-    public TutorialSteps step
+    public TutorialSteps Step
     {
         get => _step;
         private set
@@ -36,14 +36,14 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        step = TutorialSteps.Pickup;
+        Step = TutorialSteps.Pickup;
     }
 
     public void FinishStep(TutorialSteps step, int playerIndex)
     {
-        if (step != this.step) return;
+        if (step != Step) return;
         needsFinish.Remove(playerIndex);
-        if (needsFinish.Count == 0) this.step++;
+        if (needsFinish.Count == 0) Step++;
     }
 }
 
