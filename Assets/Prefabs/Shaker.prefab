@@ -58,7 +58,7 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 4
-  maxThrowDistance: 999
+  maxThrowDistance: 10
 --- !u!114 &177860476
 MonoBehaviour:
   m_ObjectHideFlags: 0
