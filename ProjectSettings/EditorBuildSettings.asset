@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level_1_Stage.unity
     guid: e7eac5f5e4e0747bd9adeab0bec99e0e
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/EndOfDemo.unity
+    guid: 7f732de5a910df844811abdb62fedf4b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: c6b30030602ff4d4d9ee9533d2ec780c, type: 2}
