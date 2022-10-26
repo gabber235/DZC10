@@ -19,6 +19,7 @@ public class Shaker : MonoBehaviour
     public float maxThrowDistance;
 
     private Vector3 _velocity;
+    private SoundManager SM;
 
     private void Start()
     {
@@ -30,6 +31,8 @@ public class Shaker : MonoBehaviour
         }
 
         players[currentShakerIndex].shaker = true;
+
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
     private void Update()
@@ -49,6 +52,21 @@ public class Shaker : MonoBehaviour
     {
         if (currentShakerIndex != index) return;
         if (players[0] == null || players[1] == null) return;
+        
+        // Ensure line-of-sight when switching shaker
+        RaycastHit hit;
+        if (Physics.Raycast(players[0].transform.position + LOS_offset, (players[1].transform.position + LOS_offset) - (players[0].transform.position + LOS_offset), out hit, maxThrowDistance, ~ignoreLayer)) {
+            if (hit.collider.CompareTag("Player")) {
+                // Debug.Log("Player in sight");
+                SM.playSoundEffect(20);
+                players[currentShakerIndex].shaker = false;
+                currentShakerIndex = (currentShakerIndex + 1) % players.Count;
+                players[currentShakerIndex].shaker = true;
+            }
+            else {
+                // Debug.Log("No Player LOS");
+            }
+        }
 
         // Ensure line-of-sight when switching shaker
         if (!Physics.Raycast(players[0].transform.position + LOS_offset,

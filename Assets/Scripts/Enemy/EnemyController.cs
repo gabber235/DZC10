@@ -18,6 +18,7 @@ namespace Enemy
 
         public bool IsDancing => currentHealth <= 0;
 
+        private SoundManager SM;
 
         // Start is called before the first frame update
         private void Start()
@@ -30,6 +31,7 @@ namespace Enemy
             if (!(currentHealth <= 0)) return;
             EnemyDeath();
             _animator.Play("Swing Dancing", 0, Random.Range(0f, 1f));
+            SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
         }
 
         public bool CanInteract(Interactor interactor)
@@ -41,6 +43,8 @@ namespace Enemy
 
         public void OnCocktailHit(Interactor interactor)
         {
+            SM.playSoundEffect(18);
+            SM.playSoundEffect(21);
             Damage(1);
 
             var tutorialManager = FindObjectOfType<TutorialManager>();

@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     public Inventory Inventory;
 
+    private SoundManager SM;
+
     public void Start()
     {
         Inventory = new Inventory(4, playerID);
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
 
         shakeActionReference.action.Enable();
         shakeActionReference.action.performed += OnShake;
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
     private void OnShake(InputAction.CallbackContext context)
@@ -37,12 +40,14 @@ public class Player : MonoBehaviour
 
         tutorialManager.FinishStep(TutorialStep.Shake1, playerID, true);
         tutorialManager.FinishStep(TutorialStep.Shake2, playerID, true);
+        Inventory.MakeCockTail(SM);
     }
 
     public void Damage(int damage)
     {
         if (dead) return;
         health -= damage;
+        SM.playSoundEffect(14);
 
         if (health <= 0)
         {

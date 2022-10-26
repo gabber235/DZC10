@@ -9,6 +9,11 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
     public int deleteAfterSeconds = 3;
 
     private bool _onFire;
+    private SoundManager SM;
+
+    public void Start(){
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+    }
 
     public bool CanInteract(Interactor interactor)
     {
@@ -26,12 +31,17 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
     {
         Instantiate(firePrefab, transform.position, Quaternion.identity);
         _onFire = true;
+        SM.playSoundEffect(4);
+        SM.playSoundEffect(19);
         StartCoroutine(WaitDelete());
     }
 
     private IEnumerator WaitDelete()
     {
         yield return new WaitForSeconds(deleteAfterSeconds);
-        if (isActiveAndEnabled) Destroy(gameObject);
+        if (isActiveAndEnabled){
+            SM.playSoundEffect(24);
+            Destroy(gameObject);
+        }
     }
 }
