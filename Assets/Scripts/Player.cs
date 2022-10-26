@@ -17,24 +17,28 @@ public class Player : MonoBehaviour
 
     public readonly Inventory Inventory = new(4);
 
+    private SoundManager SM;
+
     public void Start()
     {
         health = 5;
 
         shakeActionReference.action.Enable();
         shakeActionReference.action.performed += OnShake;
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
     private void OnShake(InputAction.CallbackContext context)
     {
         if (!shaker) return;
-        Inventory.MakeCockTail();
+        Inventory.MakeCockTail(SM);
     }
 
     public void Damage(int damage)
     {
         if (dead) return;
         health -= damage;
+        SM.playSoundEffect(14);
 
         if (health <= 0)
         {

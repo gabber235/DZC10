@@ -12,11 +12,13 @@ namespace Enemy
 
         public bool IsDancing => currentHealth <= 0;
 
+        private SoundManager SM;
 
         // Start is called before the first frame update
         private void Start()
         {
             currentHealth = maxHealth;
+            SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
         }
 
         public bool CanInteract(Interactor interactor)
@@ -28,6 +30,8 @@ namespace Enemy
 
         public void OnCocktailHit(Interactor interactor)
         {
+            SM.playSoundEffect(18);
+            SM.playSoundEffect(21);
             Damage(1);
         }
 

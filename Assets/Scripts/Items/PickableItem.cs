@@ -3,7 +3,15 @@ using UnityEngine;
 // Allows objects to be picked up from an inventory holder.
 public class PickableItem : MonoBehaviour
 {
+    private SoundManager SM;
+    private int SEID;
+
     [SerializeField] [ItemAttribute] public string item;
+
+    private void Start(){
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+        SEID = 0;
+    }
 
     private void FixedUpdate()
     {
@@ -23,6 +31,13 @@ public class PickableItem : MonoBehaviour
         var holder = coll.gameObject.GetComponent<Player>();
         if (holder == null) return;
         var added = holder.Inventory.AddItem(item);
+
+        if(item == "Lemon") SEID = 16;
+        // if(item == "Strawberry") SEID = 17;
+        if(item == "Pepper") SEID = 17;
+
+        SM.playSoundEffect(SEID);
+
         // Only if the item was added to the inventory, destroy it.
         if (added) Destroy(gameObject);
     }
