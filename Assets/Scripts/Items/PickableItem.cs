@@ -1,9 +1,12 @@
+using Tutorial;
 using UnityEngine;
 
 // Allows objects to be picked up from an inventory holder.
 public class PickableItem : MonoBehaviour
 {
     [SerializeField] [ItemAttribute] public string item;
+
+    public Optional<TutorialStep> completeStep;
 
     private void FixedUpdate()
     {
@@ -24,6 +27,8 @@ public class PickableItem : MonoBehaviour
         if (holder == null) return;
         var added = holder.Inventory.AddItem(item);
         // Only if the item was added to the inventory, destroy it.
-        if (added) Destroy(gameObject);
+        if (!added) return;
+        if (completeStep.Enabled) FindObjectOfType<TutorialManager>()?.FinishStep(completeStep.Value, holder.playerID);
+        Destroy(gameObject);
     }
 }

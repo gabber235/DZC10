@@ -1,3 +1,4 @@
+using Tutorial;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -6,6 +7,7 @@ using UnityEngine.InputSystem;
 // Sample player to quickly test the inventory system.
 public class Player : MonoBehaviour
 {
+    public int playerID;
     public int health;
 
     [HideInInspector] public bool shaker;
@@ -15,10 +17,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool dead;
     public UnityEvent GameOver;
 
-    public readonly Inventory Inventory = new(4);
+    public Inventory Inventory;
 
     public void Start()
     {
+        Inventory = new Inventory(4, playerID);
         health = 5;
 
         shakeActionReference.action.Enable();
@@ -29,6 +32,11 @@ public class Player : MonoBehaviour
     {
         if (!shaker) return;
         Inventory.MakeCockTail();
+        var tutorialManager = FindObjectOfType<TutorialManager>();
+        if (tutorialManager == null || !tutorialManager.isActiveAndEnabled) return;
+
+        tutorialManager.FinishStep(TutorialStep.Shake1, playerID, true);
+        tutorialManager.FinishStep(TutorialStep.Shake2, playerID, true);
     }
 
     public void Damage(int damage)
