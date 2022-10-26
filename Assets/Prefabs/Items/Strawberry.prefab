@@ -61,6 +61,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: strawberry
+  completeStep:
+    enabled: 1
+    value: 0
 --- !u!114 &5417674932341636507
 MonoBehaviour:
   m_ObjectHideFlags: 0
