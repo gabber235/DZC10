@@ -17,6 +17,6 @@ MonoBehaviour:
   - {fileID: 21300010, guid: 179cb3a3dc172f84f9d63d186b2b85d6, type: 3}
   - {fileID: 21300000, guid: 6bbc3414d8e0e2349ae979c829adeb35, type: 3}
   - {fileID: 21300000, guid: 7fd05b081bb903d4ca9c2f1526f8a6cc, type: 3}
-  backgroundImage: {fileID: 21300000, guid: 59d39255970794326b135bb49fca217b, type: 3}
+  backgroundImage: {fileID: 21300000, guid: 55f49c63fbc0c26489a86276d3d80f38, type: 3}
   showP1Check: 1
   showP2Check: 1
