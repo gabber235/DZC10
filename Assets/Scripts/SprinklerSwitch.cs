@@ -9,6 +9,8 @@ public class SprinklerSwitch : MonoBehaviour, IInteractionCondition, IInteractin
 
     public GameObject ElevatorObj;
 
+    private SoundManager SM;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -17,18 +19,25 @@ public class SprinklerSwitch : MonoBehaviour, IInteractionCondition, IInteractin
             Debug.LogError("Pipe not found");
 
         _sprinklers = new List<Sprinkler>(FindObjectsOfType<Sprinkler>());
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
 
     public void OnInteract(Interactor interactor)
     {
         if (_isSprinklerOn) return;
-        if (_pipe.CocktailsLeft > 0) return;
+        if (_pipe.CocktailsLeft > 0){
+            SM.playSoundEffect(2);
+            return;
+        }
 
         foreach (var sprinkler in _sprinklers) sprinkler.StartSprinkler();
         _isSprinklerOn = true;
         
         ElevatorObj.GetComponent<Animator>().Play("ElevatorOpening");
+        SM.playSoundEffect(7);
+        SM.playSoundEffect(22);
+        SM.playSoundEffect(23);
     }
 
     public bool CanInteract(Interactor interactor)

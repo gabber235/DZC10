@@ -9,6 +9,12 @@ public class Pipe : MonoBehaviour, IInteractionCondition, IThrowCocktailTrigger
 
     public int CocktailsLeft => cocktailsRequired - cocktailsAdded;
 
+    private SoundManager SM;
+
+    public void Start(){
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+    }
+
     public bool CanInteract(Interactor interactor)
     {
         return cocktailsAdded < cocktailsRequired;
@@ -19,5 +25,7 @@ public class Pipe : MonoBehaviour, IInteractionCondition, IThrowCocktailTrigger
     public void OnCocktailHit(Interactor interactor)
     {
         cocktailsAdded++;
+        SM.playSoundEffect(18);
+        SM.playSoundEffect(25);
     }
 }

@@ -12,9 +12,13 @@ namespace Enemy
         private ElvisController _elvisController;
         private EnemyController _enemyController;
 
+        private int _gruntCountdown;
+
         private float _lastAttackTime;
         private NavMeshAgent _navMeshAgent;
         private Player _player;
+
+        private SoundManager _sm;
 
         private void Start()
         {
@@ -22,6 +26,9 @@ namespace Enemy
             _navMeshAgent = theEnemy.GetComponent<NavMeshAgent>();
             _elvisController = theEnemy.GetComponent<ElvisController>();
             _enemyController = theEnemy.GetComponent<EnemyController>();
+
+            _sm = theEnemy.GetComponent<SoundManager>();
+            _gruntCountdown = Random.Range(5000, 7000);
         }
 
         private void Update()
@@ -29,13 +36,27 @@ namespace Enemy
             if (_enemyController.IsDancing)
             {
                 enabled = false;
-                return;
             }
+            else
+            {
+                if (_gruntCountdown <= 0)
+                {
+                    _sm.playSoundEffect(0);
+                    _gruntCountdown = Random.Range(5000, 7000);
+                }
+                else
+                {
+                    _gruntCountdown -= 1;
+                }
 
-            if (_player == null) return;
-            if (Time.realtimeSinceStartup - _lastAttackTime < 1.1) return;
-            _lastAttackTime = Time.realtimeSinceStartup;
-            _player.Damage(1);
+                // if(_enemyController.IsWalking && StepCountdown <= 0){
+                //     SM.audioSrc.PlayOneShot(SM.soundEffects[2]);
+                //     StepCountdown = StepSoundDelay;
+                // }else{
+                //     StepCountdown -= 1;
+                // }
+                CheckAttack();
+            }
         }
 
         private void OnTriggerEnter(Collider coll)
@@ -68,6 +89,15 @@ namespace Enemy
             _elvisController.enabled = true;
             _navMeshAgent.enabled = true;
             _player = null;
+        }
+
+        private void CheckAttack()
+        {
+            if (_player == null) return;
+            if (Time.realtimeSinceStartup - _lastAttackTime < 1.1) return;
+            _lastAttackTime = Time.realtimeSinceStartup;
+            _player.Damage(1);
+            _sm.playSoundEffect(1);
         }
     }
 }

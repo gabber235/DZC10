@@ -12,6 +12,8 @@ public class CocktailThrowing : MonoBehaviour
 
     private Transform _transform;
 
+    private SoundManager SM;
+
     public Transform Target
     {
         get => _transform;
@@ -21,6 +23,11 @@ public class CocktailThrowing : MonoBehaviour
             _startPos = transform.position + new Vector3(0f, 1.5f, 0f);
             _fraction = 0;
         }
+    }
+
+    public void Start(){
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+        SM.playSoundEffect(5);
     }
 
     // Update is called once per frame
