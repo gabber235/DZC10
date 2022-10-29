@@ -7,9 +7,18 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] soundEffects;
     public AudioSource audioSrc;
 
+    private GameObject RestartScreen;
+
     public void playSoundEffect(int soundFileNum)
     {
-        audioSrc.PlayOneShot (soundEffects[soundFileNum]);
+        RestartScreen = GameObject.Find("Restart Background");
+        if(RestartScreen!=null){
+            if(soundFileNum>1){
+                audioSrc.PlayOneShot (soundEffects[soundFileNum]);
+            }
+        }else{
+            audioSrc.PlayOneShot (soundEffects[soundFileNum]);
+        }
     }
 }
  
