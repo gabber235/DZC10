@@ -21,7 +21,7 @@ public class ComicController : MonoBehaviour
         anyKeyReference.action.Enable();
         anyKeyReference.action.performed += NextPage;
         
-        _image = this.GetComponent<Image>();
+        _image = GetComponent<Image>();
         _image.sprite = pages[0];
     }
 
