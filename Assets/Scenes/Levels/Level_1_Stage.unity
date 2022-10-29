@@ -19561,11 +19561,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4273067634020518, guid: d9f496733401b3f4cad8a385afe08ddf, type: 3}
   m_PrefabInstance: {fileID: 553586388}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &554150691 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6478562424106493661, guid: 9b7d8d223dcc14ff7979c463cceb1301, type: 3}
-  m_PrefabInstance: {fileID: 364653762181960353}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &555630082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24082,7 +24077,7 @@ PrefabInstance:
     - target: {fileID: 6002250533956648640, guid: a3b157812179445e8a45a80c7061048c, type: 3}
       propertyPath: prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 1564387854848767147, guid: 787e20388442a4057a4e0776f4b4fa6e, type: 3}
+      objectReference: {fileID: 1564387854848767147, guid: d5be5c504958e4113adb506b5bf37a6f, type: 3}
     - target: {fileID: 6002250533956648641, guid: a3b157812179445e8a45a80c7061048c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -24129,7 +24124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002250533956648654, guid: a3b157812179445e8a45a80c7061048c, type: 3}
       propertyPath: m_Name
-      value: PeperSpawner
+      value: StrawberrySpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3b157812179445e8a45a80c7061048c, type: 3}
@@ -42647,6 +42642,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4273067634020518, guid: d9f496733401b3f4cad8a385afe08ddf, type: 3}
   m_PrefabInstance: {fileID: 1214956793}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1215319786 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6478562424106493661, guid: 9b7d8d223dcc14ff7979c463cceb1301, type: 3}
+  m_PrefabInstance: {fileID: 364653762181960353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1219724253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54644,7 +54644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 101a039e1fd0a894293548ded308deb1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.4
+      value: -9.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 101a039e1fd0a894293548ded308deb1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70873,7 +70873,11 @@ PrefabInstance:
     - target: {fileID: 2537230555986640156, guid: 81b726c981e93fe4d97b96af9a6c0d4d, type: 3}
       propertyPath: FadeToNext
       value: 
-      objectReference: {fileID: 554150691}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537230555986640156, guid: 81b726c981e93fe4d97b96af9a6c0d4d, type: 3}
+      propertyPath: fadeToNext
+      value: 
+      objectReference: {fileID: 1215319786}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b726c981e93fe4d97b96af9a6c0d4d, type: 3}
 --- !u!1001 &2046262860

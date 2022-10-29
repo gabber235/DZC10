@@ -10,11 +10,11 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
     public int deleteAfterSeconds = 3;
 
     private bool _onFire;
-    private SoundManager SM;
+    private SoundManager _sm;
 
     public void Start()
     {
-        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+        _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
     public bool CanInteract(Interactor interactor)
@@ -26,15 +26,15 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
 
     public bool AcceptsCocktail(Cocktail cocktail)
     {
-        return cocktail.Name == ItemType.CocktailLemPep.Name || cocktail.Name == ItemType.CocktailStrawPep.Name;
+        return cocktail.Name == ItemType.CocktailFire.Name;
     }
 
     public void OnCocktailHit(Interactor interactor)
     {
         Instantiate(firePrefab, transform.position, Quaternion.identity);
         _onFire = true;
-        SM.playSoundEffect(4);
-        SM.playSoundEffect(19);
+        _sm.playSoundEffect(4);
+        _sm.playSoundEffect(19);
         StartCoroutine(WaitDelete());
     }
 
@@ -43,7 +43,7 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
         yield return new WaitForSeconds(deleteAfterSeconds);
         if (isActiveAndEnabled)
         {
-            SM.playSoundEffect(24);
+            _sm.playSoundEffect(24);
             Destroy(gameObject);
         }
     }

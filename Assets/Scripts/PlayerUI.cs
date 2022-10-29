@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Items;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ public class PlayerUI : MonoBehaviour
 
     public List<Image> itemImagesList;
 
-    [ItemAttribute] public List<string> itemTypesList;
+    [Item] public List<string> itemTypesList;
 
     public List<Sprite> itemSpritesList;
 

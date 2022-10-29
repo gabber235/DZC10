@@ -928,26 +928,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   healthText: {fileID: 1775190698378336168}
-  defaultItemImage: {fileID: 21300000, guid: bcd72bc2dd3615b41b113e3c68b56035, type: 3}
+  defaultItemImage: {fileID: 21300000, guid: 31baa9a4f1e02476bac4b5334c84af79, type: 3}
   itemImagesList:
   - {fileID: 1775190696778147549}
   - {fileID: 1775190696724390890}
   - {fileID: 1775190698741134012}
   - {fileID: 1775190698529355741}
   itemTypesList:
-  - strawberry
+  - Strawberry
   - Lemon
-  - Pepper
-  - CocktailStrawPep
-  - CocktailLemPep
-  - CocktailStrawLem
+  - CocktailFire
   itemSpritesList:
-  - {fileID: 21300000, guid: a69de93ad066af646b8b274222be0688, type: 3}
-  - {fileID: 21300000, guid: b5b10dd77e34f4a47a640cfc49900b86, type: 3}
-  - {fileID: 21300000, guid: b7bfc39cb81d83847a3fbe716401babd, type: 3}
-  - {fileID: 21300000, guid: 06b0d74b113951049a343ccc086b08cc, type: 3}
-  - {fileID: 21300000, guid: 379f2a1d96a2cfc4f9c5212e3040097e, type: 3}
-  - {fileID: 21300000, guid: 8523d5ebedf6e12419d5489e2cf5fcef, type: 3}
+  - {fileID: 21300000, guid: ce0d276d7ae0b475882b545d566b314c, type: 3}
+  - {fileID: 21300000, guid: e99d375c7971345a28f3f089e3c8079c, type: 3}
+  - {fileID: 21300000, guid: eba571f3c5a654dd793874f2ccbae513, type: 3}
   damAnimationTime: 0.25
   damageUI: {fileID: 1775190696806966156}
 --- !u!1 &1775190697135790330
@@ -1873,26 +1867,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   healthText: {fileID: 1775190696903782484}
-  defaultItemImage: {fileID: 21300000, guid: e19b9250b7d51e34789aac92e241a06d, type: 3}
+  defaultItemImage: {fileID: 21300000, guid: d0b97f592e75d4e35be28d8f2502943c, type: 3}
   itemImagesList:
   - {fileID: 1775190697298796581}
   - {fileID: 1775190696751541334}
   - {fileID: 1775190698159843992}
   - {fileID: 1775190697822829698}
   itemTypesList:
-  - strawberry
+  - Strawberry
   - Lemon
-  - Pepper
-  - CocktailStrawPep
-  - CocktailLemPep
-  - CocktailStrawLem
+  - CocktailIce
   itemSpritesList:
-  - {fileID: 21300000, guid: 0040a2a8baf5b5a42bca436d5993c4d1, type: 3}
-  - {fileID: 21300000, guid: 91b34d5dd31fa6b479660e9350488cc3, type: 3}
-  - {fileID: 21300000, guid: dbfa92e4fc7b224468991071fe80f144, type: 3}
-  - {fileID: 21300000, guid: dba73b6fe4555fb45a6756c26819f446, type: 3}
-  - {fileID: 21300000, guid: e4c088d6d6109164f8daa0a278dfb99d, type: 3}
-  - {fileID: 21300000, guid: 6419f7564a761cf48874568046ed1ee8, type: 3}
+  - {fileID: 21300000, guid: 1d121b55d4c5d4846801be07b86186fe, type: 3}
+  - {fileID: 21300000, guid: 373c79f037ebc45d5a743250a6d2c05a, type: 3}
+  - {fileID: 21300000, guid: 971ff0147d5644d36a9ee6e3804af221, type: 3}
   damAnimationTime: 0.25
   damageUI: {fileID: 1775190698249772397}
 --- !u!1 &1775190698662385166
@@ -2014,6 +2002,10 @@ PrefabInstance:
     - target: {fileID: 4919415210294357636, guid: cffc75656b12f5d42b115ab11a8859a3, type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919415210294357636, guid: cffc75656b12f5d42b115ab11a8859a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4919415210294357643, guid: cffc75656b12f5d42b115ab11a8859a3, type: 3}
       propertyPath: m_Pivot.x

@@ -41,9 +41,18 @@ namespace Tutorial
                         break;
                     default:
                         for (var i = 1; i <= 2; i++)
-                            if (!(_alreadyFinished.TryGetValue(_step, out var list) && list.Contains(i)))
-                                needsFinish.Add(i);
+                            needsFinish.Add(i);
                         break;
+                }
+
+                for (var i = 1; i <= 2; i++)
+                    if (_alreadyFinished.TryGetValue(_step, out var list) && list.Contains(i))
+                        needsFinish.Remove(i);
+
+                if (needsFinish.Count == 0)
+                {
+                    Step++;
+                    return;
                 }
 
                 OnTutorialStepChanged?.Invoke(_step);

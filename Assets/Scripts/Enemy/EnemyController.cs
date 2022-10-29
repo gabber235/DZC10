@@ -30,7 +30,7 @@ namespace Enemy
             _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
 
             if (!(currentHealth <= 0)) return;
-            EnemyDeath();
+            StartDance();
             _animator.Play("Swing Dancing", 0, Random.Range(0f, 1f));
         }
 
@@ -58,15 +58,20 @@ namespace Enemy
                 tutorialManager.ForceStep(TutorialStep.End);
         }
 
+        public void Dance()
+        {
+            Damage(currentHealth);
+        }
+
         private void Damage(float damage)
         {
             currentHealth -= damage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-            if (IsDancing) EnemyDeath();
+            if (IsDancing) StartDance();
         }
 
-        private void EnemyDeath()
+        private void StartDance()
         {
             if (_elvisController != null) _elvisController.enabled = false;
             if (_navMeshAgent != null) _navMeshAgent.enabled = false;

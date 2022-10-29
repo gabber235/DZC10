@@ -1,13 +1,13 @@
 using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 
 public class SprinklerSwitch : MonoBehaviour, IInteractionCondition, IInteractingTrigger
 {
+    public GameObject ElevatorObj;
     private bool _isSprinklerOn;
     private Pipe _pipe;
     private List<Sprinkler> _sprinklers;
-
-    public GameObject ElevatorObj;
 
     private SoundManager SM;
 
@@ -26,14 +26,17 @@ public class SprinklerSwitch : MonoBehaviour, IInteractionCondition, IInteractin
     public void OnInteract(Interactor interactor)
     {
         if (_isSprinklerOn) return;
-        if (_pipe.CocktailsLeft > 0){
+        if (_pipe.CocktailsLeft > 0)
+        {
             SM.playSoundEffect(2);
             return;
         }
 
         foreach (var sprinkler in _sprinklers) sprinkler.StartSprinkler();
         _isSprinklerOn = true;
-        
+
+        foreach (var enemy in FindObjectsOfType<EnemyController>()) enemy.Dance();
+
         ElevatorObj.GetComponent<Animator>().Play("ElevatorOpening");
         SM.playSoundEffect(7);
         SM.playSoundEffect(22);
