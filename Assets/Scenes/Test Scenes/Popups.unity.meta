@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/EndOfDemo.unity.meta
+guid: ddeefd8b7c8de4937b6431b64edd5da9
+========
 guid: 3b751decb72dd43949ad8a9a6febb20a
+>>>>>>>> main:Assets/Scenes/Test Scenes/Popups.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
