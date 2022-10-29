@@ -17,8 +17,9 @@ namespace Enemy
         private NavMeshAgent _navMeshAgent;
 
         private SoundManager _sm;
-
-        public bool IsDancing => currentHealth <= 0;
+        public bool IsAlive => currentHealth > 0;
+        public bool IsDancing => !IsAlive;
+        public bool IsWalking => _navMeshAgent ? new Vector2(_navMeshAgent.velocity.x, _navMeshAgent.velocity.z).magnitude > 0.05f : false;
 
         // Start is called before the first frame update
         private void Start()
@@ -26,12 +27,21 @@ namespace Enemy
             _animator = GetComponent<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _elvisController = GetComponent<ElvisController>();
+            
             currentHealth = maxHealth;
             _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
 
             if (!(currentHealth <= 0)) return;
             EnemyDeath();
             _animator.Play("Swing Dancing", 0, Random.Range(0f, 1f));
+        }
+
+        public void FixedUpdate()
+        {
+            if(IsAlive)
+            {
+                _animator.SetBool("isWalking", IsWalking);
+            }
         }
 
         public bool CanInteract(Interactor interactor)
@@ -70,7 +80,11 @@ namespace Enemy
         {
             if (_elvisController != null) _elvisController.enabled = false;
             if (_navMeshAgent != null) _navMeshAgent.enabled = false;
-            if (_animator != null) _animator.SetBool(Dancing, true);
+            if (_animator != null) 
+            {
+                _animator.SetBool("isWalking", false);
+                _animator.SetBool("Dancing", true);
+            }
         }
     }
 }

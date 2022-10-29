@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
 
         var isWalking = _charController.velocity.magnitude >= 0.5f;
-        Debug.Log("Velo: " + _charController.velocity + " mag: " + _charController.velocity.magnitude + " isWalking: " + isWalking);
 
         if (isWalking) 
         {
