@@ -19,6 +19,7 @@ namespace Tutorial
         private readonly Dictionary<TutorialStep, List<int>> _alreadyFinished = new();
 
         private TutorialStep _step;
+        private SoundManager _sm = null;
 
         // Current step of the tutorial
         public TutorialStep Step
@@ -28,7 +29,10 @@ namespace Tutorial
             {
                 _step = value;
                 needsFinish.Clear();
-
+                if (_sm != null){
+                    _sm.playSoundEffect(26);
+                }
+                
                 switch (_step)
                 {
                     case TutorialStep.Shake1:
@@ -54,6 +58,7 @@ namespace Tutorial
         private void Start()
         {
             Step = TutorialStep.Pickup;
+            _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
         }
 
         public void FinishStep(TutorialStep step, int playerIndex, bool preFinish = false)
