@@ -55,8 +55,10 @@ public class Inventory
     public void MakeCockTail(SoundManager SM)
     {
         var recipe = Cocktails.MatchRecipe(this);
-        if (recipe == null)
+        if (recipe == null){
+            SM.playSoundEffect(2);
             return;
+        }
         // Remove all the ingredients from the inventory
         foreach (var ingredient in recipe.Ingredients)
         {

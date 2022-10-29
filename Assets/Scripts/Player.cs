@@ -33,7 +33,10 @@ public class Player : MonoBehaviour
 
     private void OnShake(InputAction.CallbackContext context)
     {
-        if (!shaker) return;
+        if (!shaker){
+            SM.playSoundEffect(2);
+            return;
+        }
         Inventory.MakeCockTail(SM);
         var tutorialManager = FindObjectOfType<TutorialManager>();
         if (tutorialManager == null || !tutorialManager.isActiveAndEnabled) return;
