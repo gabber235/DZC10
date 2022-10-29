@@ -1,4 +1,5 @@
 using System.Collections;
+using Items;
 using UnityEngine;
 
 public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondition
@@ -11,7 +12,8 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
     private bool _onFire;
     private SoundManager SM;
 
-    public void Start(){
+    public void Start()
+    {
         SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
@@ -39,7 +41,8 @@ public class Ignitable : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondi
     private IEnumerator WaitDelete()
     {
         yield return new WaitForSeconds(deleteAfterSeconds);
-        if (isActiveAndEnabled){
+        if (isActiveAndEnabled)
+        {
             SM.playSoundEffect(24);
             Destroy(gameObject);
         }

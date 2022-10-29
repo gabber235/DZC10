@@ -12,13 +12,13 @@ namespace Enemy
         private ElvisController _elvisController;
         private EnemyController _enemyController;
 
+        private int _gruntCountdown;
+
         private float _lastAttackTime;
         private NavMeshAgent _navMeshAgent;
         private Player _player;
 
-        private SoundManager SM;
-
-        private int GruntCountdown;
+        private SoundManager _sm;
 
         private void Start()
         {
@@ -27,21 +27,28 @@ namespace Enemy
             _elvisController = theEnemy.GetComponent<ElvisController>();
             _enemyController = theEnemy.GetComponent<EnemyController>();
 
-            SM = theEnemy.GetComponent<SoundManager>();
-            GruntCountdown = Random.Range(5000, 7000);
+            _sm = theEnemy.GetComponent<SoundManager>();
+            _gruntCountdown = Random.Range(5000, 7000);
         }
 
         private void Update()
         {
-            if(_enemyController.IsDancing){
+            if (_enemyController.IsDancing)
+            {
                 enabled = false;
-            }else{
-                if(GruntCountdown <= 0){
-                    SM.playSoundEffect(0);
-                    GruntCountdown = Random.Range(5000, 7000);
-                }else{
-                    GruntCountdown -= 1;
+            }
+            else
+            {
+                if (_gruntCountdown <= 0)
+                {
+                    _sm.playSoundEffect(0);
+                    _gruntCountdown = Random.Range(5000, 7000);
                 }
+                else
+                {
+                    _gruntCountdown -= 1;
+                }
+
                 // if(_enemyController.IsWalking && StepCountdown <= 0){
                 //     SM.audioSrc.PlayOneShot(SM.soundEffects[2]);
                 //     StepCountdown = StepSoundDelay;
@@ -50,14 +57,6 @@ namespace Enemy
                 // }
                 CheckAttack();
             }
-        }
-
-        private void CheckAttack(){
-            if (_player == null) return;
-            if (Time.realtimeSinceStartup - _lastAttackTime < 1.1) return;
-            _lastAttackTime = Time.realtimeSinceStartup;
-            _player.Damage(1);
-            SM.playSoundEffect(1);
         }
 
         private void OnTriggerEnter(Collider coll)
@@ -90,6 +89,15 @@ namespace Enemy
             _elvisController.enabled = true;
             _navMeshAgent.enabled = true;
             _player = null;
+        }
+
+        private void CheckAttack()
+        {
+            if (_player == null) return;
+            if (Time.realtimeSinceStartup - _lastAttackTime < 1.1) return;
+            _lastAttackTime = Time.realtimeSinceStartup;
+            _player.Damage(1);
+            _sm.playSoundEffect(1);
         }
     }
 }

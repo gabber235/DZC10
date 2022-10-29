@@ -3070,7 +3070,7 @@ GameObject:
   - component: {fileID: 4494414441192230627}
   - component: {fileID: 4155687319366435110}
   - component: {fileID: 4360459147411045155}
-  - component: {fileID: 2880685107570346471}
+  - component: {fileID: 4666780572269048920}
   m_Layer: 0
   m_Name: Elvis
   m_TagString: Enemy
@@ -3365,7 +3365,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2880685107570346471
+--- !u!114 &4666780572269048920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3374,12 +3374,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7175411072310705733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0b3d12724c514498d09815e77e1166, type: 3}
+  m_Script: {fileID: 11500000, guid: 85db822c965e74c33bca7f41cbe99bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - {fileID: 8300000, guid: dc005c987239166499a7e79085422422, type: 3}
-  - {fileID: 8300000, guid: c5d97ef6744c92146ab755f65e0f3bc0, type: 3}
+  - {fileID: 8300000, guid: 1392bf6e1482d4c61bc136e08476d19a, type: 3}
+  - {fileID: 8300000, guid: 7cdaf6a8ccef84dc482985a40d90a8eb, type: 3}
   audioSrc: {fileID: 4360459147411045155}
 --- !u!1 &7393175849273082413
 GameObject:

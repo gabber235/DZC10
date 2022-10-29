@@ -33,12 +33,12 @@ namespace Enemy
             var pos = transform.position;
             for (var i = 0; i < _playerCount; i++)
             {
-                RaycastHit hit;
 #if UNITY_EDITOR
                 if (debug) Debug.DrawRay(pos, players[i].position - pos, Color.yellow);
 #endif
 
-                if (!Physics.SphereCast(transform.position, 0.5f, players[i].position - transform.position, out hit))
+                if (!Physics.SphereCast(transform.position, 0.5f, players[i].position - transform.position,
+                        out var hit))
                     continue;
 
                 if (hit.collider.CompareTag("Player"))
