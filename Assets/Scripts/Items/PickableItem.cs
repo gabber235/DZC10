@@ -35,7 +35,7 @@ public class PickableItem : MonoBehaviour
         var added = holder.Inventory.AddItem(item);
 
         if(item == "Lemon") SEID = 16;
-        // if(item == "Strawberry") SEID = 17;
+        if(item == "strawberry") SEID = 17;
         if(item == "Pepper") SEID = 17;
 
         SM.playSoundEffect(SEID);
