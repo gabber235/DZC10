@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotateSpeed = 1f;
     [SerializeField] private Camera _mainCamera;
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float _cameraRotationOffset; // Offset by the camera rotation so up always remains up.
     private CharacterController _charController;
     private Vector2 _inputVector = Vector2.zero;
+    private Animator _animator;
 
     // To prevent players walking on things.
     private float startY;
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
         _cameraRotationOffset = _mainCamera.transform.eulerAngles.y; // We use the rotation in world-space.
 
         startY = transform.position.y;
+        _animator = GetComponentInChildren<Animator>();
 
         _moveActionReference.action.Enable();
     }
@@ -45,7 +48,7 @@ public class PlayerController : MonoBehaviour
                                .normalized;
 
         // Only move when needed
-        if (targetVector.magnitude != 0) CharacterMovement(targetVector);
+        CharacterMovement(targetVector);
     }
 
     private void CharacterMovement(Vector3 targetVector)
@@ -58,7 +61,15 @@ public class PlayerController : MonoBehaviour
         pos.y = startY;
         transform.position = pos;
 
-        var rot = Quaternion.LookRotation(moveDir);
-        _charModel.rotation = Quaternion.RotateTowards(_charModel.rotation, rot, rotateSpeed * Time.deltaTime);
+        var isWalking = _charController.velocity.magnitude >= 0.5f;
+        Debug.Log("Velo: " + _charController.velocity + " mag: " + _charController.velocity.magnitude + " isWalking: " + isWalking);
+
+        if (isWalking) 
+        {
+            var rot = Quaternion.LookRotation(moveDir);
+            _charModel.rotation = Quaternion.RotateTowards(_charModel.rotation, rot, rotateSpeed * Time.deltaTime);
+        }
+        
+        _animator.SetBool("isWalking", isWalking);
     }
 }
