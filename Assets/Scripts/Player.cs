@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     {
         if (dead) return;
         health -= damage;
-        SM.playSoundEffect(14);
+        SM.playSoundEffect(13+playerID);
 
         if (health <= 0)
         {
