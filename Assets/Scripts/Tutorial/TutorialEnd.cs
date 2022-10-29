@@ -4,6 +4,9 @@ namespace Tutorial
 {
     public class TutorialEnd : MonoBehaviour
     {
+        private static readonly int FadeOut = Animator.StringToHash("FadeOut");
+        [SerializeField] private Animator fadeToNext;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -13,9 +16,7 @@ namespace Tutorial
 
         private void OnStepChanged(TutorialStep step)
         {
-            if (step == TutorialStep.End)
-                // TODO: Go the the next scene
-                Debug.Log("Nicely done!");
+            if (step == TutorialStep.End) fadeToNext.SetTrigger(FadeOut);
         }
     }
 }

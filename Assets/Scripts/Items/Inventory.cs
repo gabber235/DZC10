@@ -36,7 +36,7 @@ public class Inventory
 
         // For the tutorial, we complete the PickupMore if the player has two different ingredients in their inventory
         if (Items.ToHashSet().Count >= 2)
-            Object.FindObjectOfType<TutorialManager>().FinishStep(TutorialStep.PickupMore, _playerID, true);
+            Object.FindObjectOfType<TutorialManager>()?.FinishStep(TutorialStep.PickupMore, _playerID, true);
 
         return true;
     }

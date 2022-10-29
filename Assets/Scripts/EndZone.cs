@@ -1,38 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
-public class EndZone : MonoBehaviour {
+public class EndZone : MonoBehaviour
+{
+    private static readonly int FadeOut = Animator.StringToHash("FadeOut");
 
-    [SerializeField] private int _playersPresent = 0;
+    [FormerlySerializedAs("_playersPresent")] [SerializeField]
+    private int playersPresent;
 
-    [SerializeField] private LevelManager _manager;
-    [SerializeField] private Animator FadeToNext;
-    
+    [FormerlySerializedAs("FadeToNext")] [SerializeField]
+    private Animator fadeToNext;
+
     // Start is called before the first frame update
-    void Start() {
-        _manager = FindObjectOfType<LevelManager>();
-
-        this.GetComponent<MeshRenderer>().enabled = false;
+    private void Start()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
     }
 
-    // Update is called once per frame
-    void Update() {
-    }
+    public void OnTriggerEnter(Collider other)
+    {
+        playersPresent++;
 
-    public void OnTriggerEnter(Collider other) {
-        _playersPresent++;
-        
-        if (_playersPresent == 2) {
+        if (playersPresent == 2)
             // Could have an end-screen here instead.
-            FadeToNext.SetTrigger("FadeOut");
-        }
+            fadeToNext.SetTrigger(FadeOut);
     }
 
-    public void OnTriggerExit(Collider other) {
-        _playersPresent--;
+    public void OnTriggerExit(Collider other)
+    {
+        playersPresent--;
     }
 }
