@@ -16,8 +16,9 @@ namespace Enemy
         private ElvisController _elvisController;
         private NavMeshAgent _navMeshAgent;
 
-        public bool IsDancing => currentHealth <= 0;
+        private SoundManager _sm;
 
+        public bool IsDancing => currentHealth <= 0;
 
         // Start is called before the first frame update
         private void Start()
@@ -26,6 +27,7 @@ namespace Enemy
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _elvisController = GetComponent<ElvisController>();
             currentHealth = maxHealth;
+            _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
 
             if (!(currentHealth <= 0)) return;
             EnemyDeath();
@@ -41,6 +43,8 @@ namespace Enemy
 
         public void OnCocktailHit(Interactor interactor)
         {
+            _sm.playSoundEffect(18);
+            _sm.playSoundEffect(21);
             Damage(1);
 
             var tutorialManager = FindObjectOfType<TutorialManager>();

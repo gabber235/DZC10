@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Items;
 using Tutorial;
 using Object = UnityEngine.Object;
 
@@ -51,7 +52,7 @@ public class Inventory
         Items.Remove(name);
     }
 
-    public void MakeCockTail()
+    public void MakeCockTail(SoundManager SM)
     {
         var recipe = Cocktails.MatchRecipe(this);
         if (recipe == null)
@@ -65,6 +66,7 @@ public class Inventory
         }
 
         // Add the cocktail to the inventory
+        SM.playSoundEffect(13);
         AddItem(recipe.Result.Name);
     }
 }

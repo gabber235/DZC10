@@ -19,6 +19,7 @@ public class Shaker : MonoBehaviour
     public float maxThrowDistance;
 
     private Vector3 _velocity;
+    private SoundManager SM;
 
     private void Start()
     {
@@ -30,6 +31,8 @@ public class Shaker : MonoBehaviour
         }
 
         players[currentShakerIndex].shaker = true;
+
+        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
     }
 
     private void Update()
@@ -58,6 +61,7 @@ public class Shaker : MonoBehaviour
             )) return;
         if (!hit.collider.CompareTag("Player")) return;
 
+        SM.playSoundEffect(20);
         players[currentShakerIndex].shaker = false;
         FindObjectOfType<TutorialManager>()?.FinishStep(TutorialStep.Throw, currentShakerIndex + 1);
         currentShakerIndex = (currentShakerIndex + 1) % players.Count;
