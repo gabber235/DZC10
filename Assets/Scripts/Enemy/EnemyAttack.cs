@@ -18,6 +18,7 @@ namespace Enemy
         private NavMeshAgent _navMeshAgent;
         private Player _player;
 
+        private SoundManager _smSelf;
         private SoundManager _sm;
 
         private void Start()
@@ -26,8 +27,8 @@ namespace Enemy
             _navMeshAgent = theEnemy.GetComponent<NavMeshAgent>();
             _elvisController = theEnemy.GetComponent<ElvisController>();
             _enemyController = theEnemy.GetComponent<EnemyController>();
-
-            _sm = theEnemy.GetComponent<SoundManager>();
+            _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+            _smSelf = theEnemy.GetComponent<SoundManager>();
             _gruntCountdown = Random.Range(5000, 7000);
         }
 
@@ -41,7 +42,7 @@ namespace Enemy
             {
                 if (_gruntCountdown <= 0)
                 {
-                    _sm.playSoundEffect(0);
+                    _smSelf.playSoundEffect(0, true);
                     _gruntCountdown = Random.Range(5000, 7000);
                 }
                 else
@@ -97,7 +98,7 @@ namespace Enemy
             if (Time.realtimeSinceStartup - _lastAttackTime < 1.1) return;
             _lastAttackTime = Time.realtimeSinceStartup;
             _player.Damage(1);
-            _sm.playSoundEffect(1);
+            _sm.playSoundEffect(9);
         }
     }
 }
