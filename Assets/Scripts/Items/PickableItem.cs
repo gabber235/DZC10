@@ -1,3 +1,4 @@
+using Tutorial;
 using UnityEngine;
 
 // Allows objects to be picked up from an inventory holder.
@@ -12,6 +13,7 @@ public class PickableItem : MonoBehaviour
         SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
         SEID = 0;
     }
+    public Optional<TutorialStep> completeStep;
 
     private void FixedUpdate()
     {
@@ -39,6 +41,8 @@ public class PickableItem : MonoBehaviour
         SM.playSoundEffect(SEID);
 
         // Only if the item was added to the inventory, destroy it.
-        if (added) Destroy(gameObject);
+        if (!added) return;
+        if (completeStep.Enabled) FindObjectOfType<TutorialManager>()?.FinishStep(completeStep.Value, holder.playerID);
+        Destroy(gameObject);
     }
 }

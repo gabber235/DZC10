@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Tutorial;
+using Object = UnityEngine.Object;
 
 // Inventory system to track items in a player's inventory
 public class Inventory
 {
     private readonly int _maxItems;
+    private readonly int _playerID;
 
-    public Inventory(int maxItems)
+    public Inventory(int maxItems, int playerID)
     {
         _maxItems = maxItems;
+        _playerID = playerID;
     }
 
     public List<string> Items { get; } = new();
@@ -28,6 +32,12 @@ public class Inventory
         }
 
         Items.Add(name);
+
+
+        // For the tutorial, we complete the PickupMore if the player has two different ingredients in their inventory
+        if (Items.ToHashSet().Count >= 2)
+            Object.FindObjectOfType<TutorialManager>()?.FinishStep(TutorialStep.PickupMore, _playerID, true);
+
         return true;
     }
 

@@ -1,3 +1,5 @@
+using System.Linq;
+using Tutorial;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,10 +7,14 @@ namespace Enemy
 {
     public class EnemyController : MonoBehaviour, IThrowCocktailTrigger, IInteractionCondition
     {
+        private static readonly int Dancing = Animator.StringToHash("Dancing");
         [SerializeField] private float currentHealth;
         [SerializeField] private float maxHealth;
 
         public GameObject cocktailPrefab;
+        private Animator _animator;
+        private ElvisController _elvisController;
+        private NavMeshAgent _navMeshAgent;
 
         public bool IsDancing => currentHealth <= 0;
 
@@ -17,8 +23,15 @@ namespace Enemy
         // Start is called before the first frame update
         private void Start()
         {
+            _animator = GetComponent<Animator>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _elvisController = GetComponent<ElvisController>();
             currentHealth = maxHealth;
             SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+
+            if (!(currentHealth <= 0)) return;
+            EnemyDeath();
+            _animator.Play("Swing Dancing", 0, Random.Range(0f, 1f));
         }
 
         public bool CanInteract(Interactor interactor)
@@ -33,6 +46,16 @@ namespace Enemy
             SM.playSoundEffect(18);
             SM.playSoundEffect(21);
             Damage(1);
+
+            var tutorialManager = FindObjectOfType<TutorialManager>();
+            if (tutorialManager == null || !tutorialManager.isActiveAndEnabled) return;
+
+            var playerID = interactor.GetComponent<Player>().playerID;
+
+            tutorialManager.FinishStep(TutorialStep.Serve, playerID, true);
+
+            if (FindObjectsOfType<EnemyController>().All(c => c.IsDancing))
+                tutorialManager.ForceStep(TutorialStep.End);
         }
 
         private void Damage(float damage)
@@ -45,9 +68,9 @@ namespace Enemy
 
         private void EnemyDeath()
         {
-            GetComponent<ElvisController>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<Animator>().SetBool("Dancing", true);
+            if (_elvisController != null) _elvisController.enabled = false;
+            if (_navMeshAgent != null) _navMeshAgent.enabled = false;
+            if (_animator != null) _animator.SetBool(Dancing, true);
         }
     }
 }

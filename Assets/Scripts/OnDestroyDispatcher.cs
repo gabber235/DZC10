@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class OnDestroyDispatcher : MonoBehaviour
 {
-    public event System.Action<GameObject> OnObjectDestroyed ;
     private void OnDestroy()
     {
-        if( OnObjectDestroyed != null ) OnObjectDestroyed( gameObject ) ;
+        if (OnObjectDestroyed != null) OnObjectDestroyed(gameObject);
     }
+
+    public event Action<GameObject> OnObjectDestroyed;
 }

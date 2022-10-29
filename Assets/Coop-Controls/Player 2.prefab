@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c2e3048710416998f6b7e62d4eec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 2
   health: 5
   shaker: 0
   lastDamTime: 0
