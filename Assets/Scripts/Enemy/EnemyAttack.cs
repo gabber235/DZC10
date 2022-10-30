@@ -13,6 +13,7 @@ namespace Enemy
         private EnemyController _enemyController;
 
         private int _gruntCountdown;
+        private int _stepCountdown;
 
         private float _lastAttackTime;
         private NavMeshAgent _navMeshAgent;
@@ -29,7 +30,8 @@ namespace Enemy
             _enemyController = theEnemy.GetComponent<EnemyController>();
             _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
             _smSelf = theEnemy.GetComponent<SoundManager>();
-            _gruntCountdown = Random.Range(5000, 7000);
+            _gruntCountdown = Random.Range(1500, 2500);
+            _stepCountdown = 150;
         }
 
         private void Update()
@@ -40,22 +42,22 @@ namespace Enemy
             }
             else
             {
-                if (_gruntCountdown <= 0)
+                if (_gruntCountdown <= 0 && _enemyController.IsWalking)
                 {
                     _smSelf.playSoundEffect(0, true);
-                    _gruntCountdown = Random.Range(5000, 7000);
+                    _gruntCountdown = Random.Range(1500, 2500);
                 }
                 else
                 {
                     _gruntCountdown -= 1;
                 }
 
-                // if(_enemyController.IsWalking && StepCountdown <= 0){
-                //     SM.audioSrc.PlayOneShot(SM.soundEffects[2]);
-                //     StepCountdown = StepSoundDelay;
-                // }else{
-                //     StepCountdown -= 1;
-                // }
+                if(_enemyController.IsWalking && _stepCountdown <= 0){
+                    _sm.playSoundEffect(3);
+                    _stepCountdown = 150;
+                }else{
+                    _stepCountdown -= 1;
+                }
                 CheckAttack();
             }
         }

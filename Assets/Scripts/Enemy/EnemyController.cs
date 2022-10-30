@@ -21,7 +21,7 @@ namespace Enemy
         private bool IsAlive => currentHealth > 0;
         public bool IsDancing => !IsAlive;
 
-        private bool IsWalking => _navMeshAgent &&
+        public bool IsWalking => _navMeshAgent &&
                                   new Vector2(_navMeshAgent.velocity.x, _navMeshAgent.velocity.z).magnitude > 0.05f;
 
         // Start is called before the first frame update

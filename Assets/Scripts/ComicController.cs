@@ -13,6 +13,8 @@ public class ComicController : MonoBehaviour
 
     private Image _image;
     
+    private GameObject Fader;
+
     public Sprite[] pages;
     
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class ComicController : MonoBehaviour
         
         _image = GetComponent<Image>();
         _image.sprite = pages[0];
+        Fader = GameObject.Find("FadeToBlack");
     }
 
     void NextPage(InputAction.CallbackContext context) {
@@ -33,7 +36,7 @@ public class ComicController : MonoBehaviour
         }
         else
         {
-            GameObject.Find("FadeToBlack").GetComponent<Animator>().SetTrigger("FadeOut");
+            Fader.GetComponent<Animator>().SetTrigger("FadeOut");
         }
     }
     
