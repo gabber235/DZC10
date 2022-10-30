@@ -120,7 +120,7 @@ MonoBehaviour:
   _interactingPos: {fileID: 6408445816680112827}
   _range: 4
   _attackActionReference: {fileID: -581075585554764564, guid: 7a2b2245efbbe55488da5a93bfbbe092, type: 3}
-  interactableColor: {r: 0.94509804, g: 0.9019608, b: 0.21568628, a: 1}
+  interactableColor: {r: 0.94509804, g: 0.49151078, b: 0.21568626, a: 1}
 --- !u!114 &4822164505782252691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 4
-  outlineColor: {r: 0.94509804, g: 0.9019608, b: 0.21568628, a: 0.23529412}
+  outlineColor: {r: 0.94509804, g: 0.49411765, b: 0.21568628, a: 0.23529412}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []

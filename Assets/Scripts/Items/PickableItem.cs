@@ -2,47 +2,49 @@ using Tutorial;
 using UnityEngine;
 
 // Allows objects to be picked up from an inventory holder.
-public class PickableItem : MonoBehaviour
+namespace Items
 {
-    private SoundManager SM;
-    private int SEID;
-
-    [SerializeField] [ItemAttribute] public string item;
-
-    private void Start(){
-        SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
-        SEID = 0;
-    }
-    public Optional<TutorialStep> completeStep;
-
-    private void FixedUpdate()
+    public class PickableItem : MonoBehaviour
     {
-        var trans = transform;
-        // Rotate the item.
-        trans.Rotate(Vector3.up, 1f);
-        // Move the item up and down smoothly to simulate bobbing.
-        var position = trans.position;
-        position =
-            new Vector3(position.x, Mathf.Sin(Time.time) * 0.25f + 0.5f, position.z);
-        transform.position = position;
-    }
+        [SerializeField] [Item] public string item;
+        public Optional<TutorialStep> completeStep;
+        private SoundManager _sm;
 
-    // When the player runs in to the item, they will pick it up.
-    private void OnTriggerEnter(Collider coll)
-    {
-        var holder = coll.gameObject.GetComponent<Player>();
-        if (holder == null) return;
-        var added = holder.Inventory.AddItem(item);
+        private void Start()
+        {
+            _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+        }
 
-        if(item == "Lemon") SEID = 16;
-        if(item == "strawberry") SEID = 17;
-        if(item == "Pepper") SEID = 17;
+        private void FixedUpdate()
+        {
+            var trans = transform;
+            // Rotate the item.
+            trans.Rotate(Vector3.up, 1f);
+            // Move the item up and down smoothly to simulate bobbing.
+            var position = trans.position;
+            position =
+                new Vector3(position.x, Mathf.Sin(Time.time) * 0.25f + 0.5f, position.z);
+            transform.position = position;
+        }
 
-        SM.playSoundEffect(SEID);
+        // When the player runs in to the item, they will pick it up.
+        private void OnTriggerEnter(Collider coll)
+        {
+            var holder = coll.gameObject.GetComponent<Player>();
+            if (holder == null) return;
+            var added = holder.Inventory.AddItem(item);
 
-        // Only if the item was added to the inventory, destroy it.
-        if (!added) return;
-        if (completeStep.Enabled) FindObjectOfType<TutorialManager>()?.FinishStep(completeStep.Value, holder.playerID);
-        Destroy(gameObject);
+            var soundId = 0;
+            if (item == ItemType.Lemon.Name) soundId = 16;
+            if (item == ItemType.Strawberry.Name) soundId = 17;
+
+            if (soundId > 0) _sm.playSoundEffect(soundId);
+
+            // Only if the item was added to the inventory, destroy it.
+            if (!added) return;
+            if (completeStep.Enabled)
+                FindObjectOfType<TutorialManager>()?.FinishStep(completeStep.Value, holder.playerID);
+            Destroy(gameObject);
+        }
     }
 }

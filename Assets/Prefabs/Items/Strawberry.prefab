@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8619930a6d0204a5ba39b2c1df9fa134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: strawberry
+  item: Strawberry
   completeStep:
     enabled: 1
     value: 0
