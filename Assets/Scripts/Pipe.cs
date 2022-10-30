@@ -27,5 +27,8 @@ public class Pipe : MonoBehaviour, IInteractionCondition, IThrowCocktailTrigger
         cocktailsAdded++;
         SM.playSoundEffect(18);
         SM.playSoundEffect(25);
+        if(cocktailsAdded == cocktailsRequired){
+            SM.playSoundEffect(26);
+        }
     }
 }

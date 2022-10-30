@@ -33,7 +33,10 @@ public class Player : MonoBehaviour
 
     private void OnShake(InputAction.CallbackContext context)
     {
-        if (!shaker) return;
+        if (!shaker){
+            SM.playSoundEffect(2);
+            return;
+        }
         Inventory.MakeCockTail(SM);
         var tutorialManager = FindObjectOfType<TutorialManager>();
         if (tutorialManager == null || !tutorialManager.isActiveAndEnabled) return;
@@ -46,9 +49,9 @@ public class Player : MonoBehaviour
     {
         if (dead) return;
         health -= damage;
-        SM.playSoundEffect(14);
+        SM.playSoundEffect(13+playerID);
 
-        if (health <= 0)
+        if (health <= 0 && GameObject.Find("Restart Background")==null)
         {
             health = 0;
             dead = true;

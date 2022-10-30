@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f21a67b31ef946608795e4a0816e61f, type: 3}
   m_Name: ServeMore
   m_EditorClassIdentifier: 
-  text: Serve all the elvisis with cocktails
+  text: Serve all the sitting Elvisis with cocktails
   images: []
   backgroundImage: {fileID: 21300000, guid: 55f49c63fbc0c26489a86276d3d80f38, type: 3}
   showP1Check: 0

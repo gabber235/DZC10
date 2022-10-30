@@ -3131,7 +3131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0454944c336d6194badd9d47e49a123c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 8252982803366206411}
   players: []
   distToPlayers: []
   debug: 0
@@ -3290,7 +3289,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3379,7 +3378,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffects:
   - {fileID: 8300000, guid: 1392bf6e1482d4c61bc136e08476d19a, type: 3}
-  - {fileID: 8300000, guid: 7cdaf6a8ccef84dc482985a40d90a8eb, type: 3}
   audioSrc: {fileID: 4360459147411045155}
 --- !u!1 &7393175849273082413
 GameObject:
