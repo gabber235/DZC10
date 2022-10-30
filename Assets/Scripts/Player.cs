@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         health -= damage;
         SM.playSoundEffect(13+playerID);
 
-        if (health <= 0)
+        if (health <= 0 && GameObject.Find("Restart Background")==null)
         {
             health = 0;
             dead = true;
