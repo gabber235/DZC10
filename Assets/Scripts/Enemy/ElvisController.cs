@@ -8,11 +8,11 @@ namespace Enemy
 {
     public class ElvisController : MonoBehaviour
     {
-        public NavMeshAgent agent;
         [SerializeField] private List<Transform> players;
         [SerializeField] private List<float> distToPlayers;
 
         [SerializeField] private bool debug;
+        private NavMeshAgent _agent;
         private int _playerCount;
         private Vector3 _target;
 
@@ -21,11 +21,13 @@ namespace Enemy
         // Start is called before the first frame update
         private void Awake()
         {
+            _agent = GetComponent<NavMeshAgent>();
+
             players = FindObjectsOfType<PlayerController>().Select(p => p.transform).ToList();
             distToPlayers = players.Select(_ => Mathf.Infinity).ToList();
             _playerCount = players.Count;
 
-            agent.SetDestination(transform.localPosition);
+            _agent.SetDestination(transform.localPosition);
         }
 
         private void FixedUpdate()
@@ -54,15 +56,15 @@ namespace Enemy
 
             if (closestIndex != -1)
             {
-                agent.SetDestination(players[closestIndex].position);
+                _agent.SetDestination(players[closestIndex].position);
                 _targetPos = players[closestIndex].position;
-                agent.isStopped = false;
-                _targetPos = agent.destination;
+                _agent.isStopped = false;
+                _targetPos = _agent.destination;
             }
 
-            if (agent.remainingDistance < 1)
+            if (_agent.remainingDistance < 1)
                 // Attack logic
-                agent.isStopped = true;
+                _agent.isStopped = true;
         }
 
 #if UNITY_EDITOR
