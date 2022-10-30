@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f21a67b31ef946608795e4a0816e61f, type: 3}
   m_Name: Serve
   m_EditorClassIdentifier: 
-  text: Serve the cocktail to an Elvis
+  text: Serve the cocktail to a sitting Elvis
   images:
   - {fileID: 21300000, guid: edcc2caa0974f4a5fa931038b11dca1d, type: 3}
   - {fileID: 21300000, guid: 5a5e063dd5d148e45bb2f14281a7d274, type: 3}
