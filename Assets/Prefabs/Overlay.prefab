@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 953921842}
   - component: {fileID: 953921841}
   - component: {fileID: 953921840}
-  - component: {fileID: 4690562514350165908}
   m_Layer: 5
   m_Name: Menu button
   m_TagString: Untagged
@@ -258,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4690562514350165908}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -282,18 +281,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4690562514350165908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953921838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167fcb93182ae2b43b150e6bcb02c3a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1496706686
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +293,6 @@ GameObject:
   - component: {fileID: 1496706690}
   - component: {fileID: 1496706689}
   - component: {fileID: 1496706688}
-  - component: {fileID: 7483663783578889448}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -417,7 +403,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7483663783578889448}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Button, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -441,18 +427,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7483663783578889448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496706686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167fcb93182ae2b43b150e6bcb02c3a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1586152969
 GameObject:
   m_ObjectHideFlags: 0

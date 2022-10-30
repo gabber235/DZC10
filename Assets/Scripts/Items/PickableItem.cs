@@ -8,13 +8,11 @@ namespace Items
     {
         [SerializeField] [Item] public string item;
         public Optional<TutorialStep> completeStep;
-        private int _seid;
         private SoundManager _sm;
 
         private void Start()
         {
             _sm = GameObject.Find("SM_SE").GetComponent<SoundManager>();
-            _seid = 0;
         }
 
         private void FixedUpdate()
@@ -36,11 +34,11 @@ namespace Items
             if (holder == null) return;
             var added = holder.Inventory.AddItem(item);
 
-            if (item == "Lemon") _seid = 16;
-            // if(item == "Strawberry") SEID = 17;
-            if (item == "Pepper") _seid = 17;
+            var soundId = 0;
+            if (item == ItemType.Lemon.Name) soundId = 16;
+            if (item == ItemType.Strawberry.Name) soundId = 17;
 
-            _sm.playSoundEffect(_seid);
+            if (soundId > 0) _sm.playSoundEffect(soundId);
 
             // Only if the item was added to the inventory, destroy it.
             if (!added) return;

@@ -22,33 +22,7 @@ namespace Items
 
         private bool HasMaxItems => Items.Count >= _maxItems;
 
-        public bool AddItem(string name) {
-        // For the tutorial, we complete the PickupMore if the player has two different ingredients in their inventory
-        if (Items.ToHashSet().Count >= 2)
-            Object.FindObjectOfType<TutorialManager>()?.FinishStep(TutorialStep.PickupMore, _playerID, true);
-
-        return true;
-    }
-
-    public Cocktail GetFirstCocktail(Func<Cocktail, bool> predicate)
-    {
-        return Items.Select(ItemType.GetItem).OfType<Cocktail>().FirstOrDefault(predicate);
-    }
-
-    public void RemoveItem(string name)
-    {
-        Items.Remove(name);
-    }
-
-    public void MakeCockTail(SoundManager SM)
-    {
-        var recipe = Cocktails.MatchRecipe(this);
-        if (recipe == null){
-            SM.playSoundEffect(2);
-            return;
-        }
-        // Remove all the ingredients from the inventory
-        foreach (var ingredient in recipe.Ingredients)
+        public bool AddItem(string name)
         {
             // If a inventory is full, remove the first ingredient
             if (HasMaxItems)
@@ -60,8 +34,6 @@ namespace Items
             }
 
             Items.Add(name);
-
-
             // For the tutorial, we complete the PickupMore if the player has two different ingredients in their inventory
             if (Items.ToHashSet().Count >= 2)
                 Object.FindObjectOfType<TutorialManager>()?.FinishStep(TutorialStep.PickupMore, _playerID, true);
@@ -81,7 +53,12 @@ namespace Items
 
         public void MakeCockTail(SoundManager sm)
         {
-            if (!Items.Contains(ItemType.Lemon.Name) || !Items.Contains(ItemType.Strawberry.Name)) return;
+            if (!Items.Contains(ItemType.Lemon.Name) || !Items.Contains(ItemType.Strawberry.Name))
+            {
+                sm.playSoundEffect(2);
+                return;
+            }
+
             // Remove the ingredients
             Items.Remove(ItemType.Lemon.Name);
             Items.Remove(ItemType.Strawberry.Name);
