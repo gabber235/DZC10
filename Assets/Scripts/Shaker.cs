@@ -58,8 +58,18 @@ public class Shaker : MonoBehaviour
                 players[1].transform.position + LOS_offset - (players[0].transform.position + LOS_offset),
                 out var hit,
                 maxThrowDistance, ~ignoreLayer
-            )) return;
-        if (!hit.collider.CompareTag("Player")) return;
+            ))
+        {
+            SM.playSoundEffect(2);
+            return;
+        }
+
+        if (!hit.collider.CompareTag("Player"))
+        {
+            Debug.Log("No Player LOS");
+            SM.playSoundEffect(2);
+            return;
+        }
 
         SM.playSoundEffect(20);
         players[currentShakerIndex].shaker = false;

@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 {
     public int playerID;
     public int health;
+    private Animator _animator;
+    
 
     [HideInInspector] public bool shaker;
     [HideInInspector] public double lastDamTime;
@@ -21,15 +23,28 @@ public class Player : MonoBehaviour
     public Inventory Inventory;
 
     private SoundManager SM;
+    private int _stepCountdown;
 
     public void Start()
     {
         Inventory = new Inventory(4, playerID);
         health = 5;
-
+        _animator = GetComponentInChildren<Animator>();
         shakeActionReference.action.Enable();
         shakeActionReference.action.performed += OnShake;
         SM = GameObject.Find("SM_SE").GetComponent<SoundManager>();
+        _stepCountdown = 130;
+    }
+
+    public void Update(){
+        if(_animator.GetBool("isWalking")){
+            if(_stepCountdown <= 0){
+                SM.playSoundEffect(3);
+                _stepCountdown = 130;
+            }else{
+                _stepCountdown -= 1;
+            }
+        }
     }
 
     private void OnShake(InputAction.CallbackContext context)
